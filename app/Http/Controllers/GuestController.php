@@ -3,62 +3,48 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Guest;
+
 
 class GuestController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $guests = Guest::all();
+        return view('guests.index', compact('guests'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('guests.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'asal_instansi' => 'required|string|max:255',
+            'tujuan' => 'required|string|max:255',
+            'nomor_hp' => 'required|string|max:15',
+            'foto' => 'required|string',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        // image handle
+        $image = $request->input('foto');
+        $image = str_replace('data:image/png;base64,', '', $image);
+        $image = str_replace(' ', '+', $image);
+        $imageName = time() . '.png';
+        File::put(public_path('images') . '/' . $imageName, base64_decode($image));
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+        Guest::create([
+            'nama' => $request->nama,
+            'asal_instansi' => $request->asal_instansi,
+            'tujuan' => $request->tujuan,
+            'nomor_hp' => $request->nomor_hp,
+            'foto' => $imageName,
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('guests.create')
+            ->with('success', 'Guest registered successfully.');
     }
 }

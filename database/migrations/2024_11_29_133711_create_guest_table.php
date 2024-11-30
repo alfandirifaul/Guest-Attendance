@@ -9,16 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('guest', function (Blueprint $table) {
+        Schema::create('guests', function (Blueprint $table) {
             $table->id();
 
             $table->string('nama');
-            $table->string('asal');
-            $table->string('keperluan');
+            $table->string('asal_instansi');
             $table->string('tujuan');
-            $table->string('nomor');
+            $table->string('nomor_hp');
             $table->string('foto');
 
             $table->timestamps();
