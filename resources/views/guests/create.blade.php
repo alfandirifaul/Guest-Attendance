@@ -2,46 +2,66 @@
 
 @section('content')
 
-    <div class="container">
-        <h1 class="mt-5">Guest Attendance</h1>
+    <div class="px-10 py-10">
+        <div class="mb-4 flex justify-center items-center">
+            <h1 class="text-slate-700 font-bold text-4xl ">Guest Attendance</h1>
+        </div>
 
         @if(session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
+            <div class="">{{ session('success') }}</div>
         @endif
 
-        <form method="POST" action="{{ route('guests.store') }}">
+        <form class="mt-10" method="POST" action="{{ route('guests.store') }}">
             @csrf
-            <div class="form-group">
-                <label for="nama">Nama:</label>
-                <input type="text" name="nama" id="nama" class="form-control" required>
+            <div class="font-bold text-slate-700 mb-4">
+                <div class="mb-2">
+                    <label for="nama">Nama:</label>
+                </div>
+                <x-text-input type="text" name="nama" id="nama" class="form-control" required/>
             </div>
 
-            <div class="form-group">
-                <label for="asal_instansi">Asal Instansi:</label>
-                <input type="text" name="asal_instansi" id="asal_instansi" class="form-control" required>
+            <div class="font-bold text-slate-700 mb-4">
+                <div class="mb-2">
+                    <label for="asal_instansi">Asal Instansi:</label>
+                </div>
+                <x-text-input type="text" name="asal_instansi" id="asal_instansi" class="form-control" required/>
             </div>
 
-            <div class="form-group">
-                <label for="tujuan">Tujuan:</label>
-                <input type="text" name="tujuan" id="tujuan" class="form-control" required>
+            <div class="font-bold text-slate-700 mb-4">
+                <div class="mb-2">
+                    <label for="tujuan">Tujuan:</label>
+                </div>
+                <x-text-input type="text" name="tujuan" id="tujuan" class="form-control" required/>
             </div>
 
-            <div class="form-group">
-                <label for="nomor_hp">Nomor HP:</label>
-                <input type="text" name="nomor_hp" id="nomor_hp" class="form-control" required>
+            <div class="font-bold text-slate-700 mb-4">
+                <div class="mb-2">
+                    <label for="nomor_hp">Nomor HP:</label>
+                </div>
+                <x-text-input type="text" name="nomor_hp" id="nomor_hp" class="form-control" required/>
             </div>
 
-            <div class="form-group" id="camera">
-                <label for="foto">Foto:</label>
+            <div class="font-bold text-slate-700 mb-4" id="camera">
+                <div class="mb-2">
+                    <label for="foto">Foto:</label>
+                </div>
                 <div>
                     <video id="video" width="320" height="240" autoplay></video>
                 </div>
-                <button type="button" id="snap" class="btn btn-primary mt-2">Capture Photo</button>
+                <button type="button" id="snap"
+                        class="mt-4 w-[320px] border rounded-md border-slate-300 px-2.5 py-1.5 text-center
+                               text-sm font-semibold text-black shadow-sm hover:bg-slate-100">
+                    Capture Photo
+                </button>
                 <canvas id="canvas" width="320" height="240"></canvas>
                 <input type="hidden" name="foto" id="foto">
             </div>
 
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit"
+                    class="w-full border rounded-md border-blue-500 px-2.5 py-1.5 text-center
+                    text-sm font-semibold text-black shadow-sm bg-blue-500 hover:bg-blue-600">
+                Submit
+            </button>
         </form>
     </div>
 
