@@ -45,9 +45,7 @@
         </form>
     </div>
 
-    <!-- Include JavaScript libraries -->
     <script>
-        // Access the camera
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia({ video: true })
                 .then(function (stream) {
@@ -60,12 +58,10 @@
                 });
         }
 
-        // Elements for capturing the image
         const canvas = document.getElementById('canvas');
         const context = canvas.getContext('2d');
         const video = document.getElementById('video');
 
-        // Capture the photo
         document.getElementById('snap').addEventListener('click', function () {
             context.drawImage(video, 0, 0, 320, 240);
             const dataURL = canvas.toDataURL('image/png');
