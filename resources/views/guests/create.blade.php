@@ -13,36 +13,36 @@
 
         <form class="mt-10" method="POST" action="{{ route('guests.store') }}">
             @csrf
-            <div class="font-bold text-slate-700 mb-4">
-                <div class="mb-2">
+            <div class="text-slate-700 mb-4">
+                <div class="font-bold mb-2">
                     <label for="nama">Nama:</label>
                 </div>
                 <x-text-input type="text" name="nama" id="nama" class="form-control" required/>
             </div>
 
-            <div class="font-bold text-slate-700 mb-4">
-                <div class="mb-2">
+            <div class="text-slate-700 mb-4">
+                <div class="font-bold mb-2">
                     <label for="asal_instansi">Asal Instansi:</label>
                 </div>
-                <x-text-input type="text" name="asal_instansi" id="asal_instansi" class="form-control" required/>
+                <x-text-input type="text" name="asal_instansi" id="asal_instansi" required/>
             </div>
 
-            <div class="font-bold text-slate-700 mb-4">
-                <div class="mb-2">
+            <div class="text-slate-700 mb-4">
+                <div class="font-bold mb-2">
                     <label for="tujuan">Tujuan:</label>
                 </div>
-                <x-text-input type="text" name="tujuan" id="tujuan" class="form-control" required/>
+                <x-text-input type="text" name="tujuan" id="tujuan" required/>
             </div>
 
-            <div class="font-bold text-slate-700 mb-4">
-                <div class="mb-2">
+            <div class="text-slate-700 mb-4">
+                <div class="mb-2 font-bold ">
                     <label for="nomor_hp">Nomor HP:</label>
                 </div>
-                <x-text-input type="text" name="nomor_hp" id="nomor_hp" class="form-control" required/>
+                <x-text-input type="number" name="nomor_hp" id="nomor_hp" required/>
             </div>
 
-            <div class="font-bold text-slate-700 mb-4" id="camera">
-                <div class="mb-2">
+            <div class="text-slate-700 mb-4" id="camera">
+                <div class="font-bold mb-2">
                     <label for="foto">Foto:</label>
                 </div>
                 <div>

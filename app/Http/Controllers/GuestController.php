@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Guest;
+use Illuminate\Support\Facades\File;
 
 
 class GuestController extends Controller
