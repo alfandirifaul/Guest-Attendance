@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Guest;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 
 class GuestController extends Controller
@@ -22,20 +23,14 @@ class GuestController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nama' => 'required|string|max:255',
-            'asal_instansi' => 'required|string|max:255',
-            'tujuan' => 'required|string|max:255',
-            'nomor_hp' => 'required|string|max:15',
-            'foto' => 'required|string',
-        ]);
-
         // image handle
         $image = $request->input('foto');
         $image = str_replace('data:image/png;base64,', '', $image);
         $image = str_replace(' ', '+', $image);
         $imageName = time() . '.png';
-        File::put(public_path('images') . '/' . $imageName, base64_decode($image));
+
+        // Simpan gambar menggunakan Storage
+        Storage::disk('public')->put('image/' . $imageName, base64_decode($image));
 
         Guest::create([
             'nama' => $request->nama,
@@ -45,7 +40,7 @@ class GuestController extends Controller
             'foto' => $imageName,
         ]);
 
-        return redirect()->route('guests.create')
+        return redirect()->route('guests.index')
             ->with('success', 'Guest registered successfully.');
     }
 }

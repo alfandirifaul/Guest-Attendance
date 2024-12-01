@@ -2,9 +2,36 @@
 
 @section('content')
 
-    <div class="px-10 py-10">
+    <div class="px-50 py-20">
+        <nav class="bg-[rgb(7,38,68)] shadow-lg top-0 fixed w-full z-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-between items-center">
+                    <!-- Logo -->
+                    <div class="flex space-x-4">
+                        <a href="{{ route('guests.index') }}" class="flex items-center py-5 px-2 text-gray-700">
+                            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-12 w-12 mr-2">
+                            <span class="font-bold text-white text-2xl">SMK-SMTI PONTIANAK</span>
+                        </a>
+                    </div>
+                    <!-- Navigation Links -->
+                    <div class="hidden md:flex items-center text-xl font-bold">
+                        <a href="{{ route('guests.index') }}" class=" text-white hover:text-blue-500">Home</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="px-10 ">
         <div class="mb-4 flex justify-center items-center">
             <h1 class="text-slate-700 font-bold text-4xl ">Guest Attendance</h1>
+        </div>
+
+        <div class="flex text-center justify-center items-center bg-[rgb(222,170,21)] text-l font-medium h-[100px]">
+            <p>Thank you for your willingness to fill out the guest list.
+                We will not misuse your data for our personal interests.
+                By filling this in I agree to the applicable policies and conditions. <br>
+                Please fill the requirement below.</p>
         </div>
 
         @if(session('success'))
@@ -58,12 +85,18 @@
             </div>
 
             <button type="submit"
-                    class="w-full border rounded-md border-blue-500 px-2.5 py-1.5 text-center
-                    text-sm font-semibold text-black shadow-sm bg-blue-500 hover:bg-blue-600">
+                    class="w-full border rounded-md px-2.5 py-3.5 text-center
+                    text-sm font-semibold text-white shadow-sm bg-[rgb(7,38,68)] hover:bg-[rgb(7,108,148)]">
                 Submit
             </button>
         </form>
     </div>
+
+    <footer class="bg-[rgb(222,170,21)]  py-6 mt-20 w-full">
+        <div class=" mx-auto px-6 text-center">
+            <p class="text-white">&copy; {{ date('Y') }} SMK-SMTI Pontianak. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
