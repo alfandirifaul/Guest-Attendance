@@ -136,10 +136,14 @@
         const context = canvas.getContext('2d');
         const video = document.getElementById('video');
 
+        canvas.width = 640;
+        canvas.height = 480;
+
         document.getElementById('snap').addEventListener('click', function () {
-            context.drawImage(video, 0, 0, 320, 240);
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
             const dataURL = canvas.toDataURL('image/png');
             document.getElementById('foto').value = dataURL;
+
             alert('Photo captured successfully!');
         });
     </script>

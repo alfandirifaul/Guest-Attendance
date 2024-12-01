@@ -61,7 +61,7 @@
                 </div>
             @else
                 <p class="text-center text-gray-500 mt-10 text-xl">
-                    No guests found. Start adding some visitors!
+                    No guests found. There is no visitors!
                 </p>
             @endif
         </div>
