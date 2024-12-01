@@ -27,12 +27,13 @@
                 <div class="relative">
                     <h2 class="mt-20 text-6xl font-bold mb-8">Welcome to SMK-SMTI Pontianak <br> Guest Registration Website</h2>
                     <p class="mb-36 font-medium text-xl text-justify mt-20">
-                        This platform is exclusively designed for recording the identities and details of guests who visit SMTI Pontianak.
+                        This platform is exclusively designed for recording the identities and details of guests who visit SMK-SMTI Pontianak.
                         The information collected here is solely used for administrative purposes and to enhance our visitor management system.
                         Please ensure that the details you provide are accurate and complete. Your cooperation is highly appreciated. Thank you!                    </p>
-                    <p class="mb-4 font-bold text-white">Please register your identity to inform me that you has been visit us.</p>
+                    <p class="mb-4 font-bold text-white">Please register your identity to inform us your visit.</p>
                     <a href="{{ route('guests.create') }}"
-                       class=" mb-20 mt-5 bg-[rgb(222,170,21)] hover:bg-[rgb(222,200,51)]  text-white py-4 px-8 w-[200px] text-lg font-semibold rounded-lg inline-block">
+                       class=" mb-20 mt-5 bg-[rgb(222,170,21)] hover:bg-[rgb(222,200,51)]  text-white py-4 px-8 w-[200px] text-lg font-semibold rounded-lg inline-block
+                       transition transform hover:scale-105 duration-300">
                         Register
                     </a>
                 </div>

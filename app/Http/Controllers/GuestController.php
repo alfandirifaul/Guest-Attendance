@@ -23,13 +23,27 @@ class GuestController extends Controller
 
     public function store(Request $request)
     {
-        // image handle
+       $request->validate([
+                'nama' => 'required|string|max:255',
+                'asal_instansi' => 'required|string|max:255',
+                'tujuan' => 'required|string|max:255',
+                'nomor_hp' => 'required|digits_between:9,15',
+                'foto' => 'required|string',
+            ], [
+                'nama.required' => 'Nama wajib diisi.',
+                'asal_instansi.required' => 'Asal instansi harus diisi.',
+                'tujuan.required' => 'Tujuan kunjungan harus diisi.',
+                'nomor_hp.required' => 'Nomor HP wajib diisi.',
+                'nomor_hp.digits_between' => 'Nomor HP harus terdiri dari 9-15 digit.',
+                'foto.required' => 'Lakukan Capture Photo'
+            ]);
+
+
         $image = $request->input('foto');
         $image = str_replace('data:image/png;base64,', '', $image);
         $image = str_replace(' ', '+', $image);
         $imageName = time() . '.png';
 
-        // Simpan gambar menggunakan Storage
         Storage::disk('public')->put('image/' . $imageName, base64_decode($image));
 
         Guest::create([
@@ -43,4 +57,11 @@ class GuestController extends Controller
         return redirect()->route('guests.index')
             ->with('success', 'Guest registered successfully.');
     }
+
+    public function showAll()
+    {
+        $guests = Guest::all();
+        return view('guests.all', compact('guests'));
+    }
 }
+
