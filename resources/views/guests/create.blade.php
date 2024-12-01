@@ -85,7 +85,7 @@
             <div class="flex flex-col">
                 <label for="foto" class="text-lg font-semibold text-gray-700 mb-4">Capture Photo:</label>
                 <div class="flex justify-center">
-                    <video id="video" class="rounded-md border" width="320" height="240" autoplay></video>
+                    <video id="video" class="rounded-md border" width="1080" height="240" autoplay></video>
                 </div>
                 @error('foto')
                     <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
