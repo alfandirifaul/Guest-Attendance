@@ -18,6 +18,8 @@ Route::post('/guests/store', function (Request $request){
 
 Route::get('guests/all', [GuestController::class, 'showAll'])->name('guests.showAll');
 
+Route::get('guests/{id}', [GuestController::class, 'showPersonal'])->name('guests.showPersonal');
+
 Route::fallback(function () {
     return redirect()->route('guests.create');
 });

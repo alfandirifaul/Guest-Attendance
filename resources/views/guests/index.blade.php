@@ -68,46 +68,52 @@
                 <!-- Follow Us -->
                 <div class="flex-1 bg-white p-6 shadow-lg rounded hover:shadow-2xl hover:translate-y-[-10px] transition-all duration-300 ease-in-out">
                     <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Follow Us</h2>
-                    <div class="flex flex-col items-center justify-center mt-10">
+                    <div class="flex flex-col items-center justify-center mt-10 space-y-6">
                         <!-- Instagram -->
-                        <p><strong>Instagram:</strong><br></p>
-                        <a href="https://www.instagram.com/smksmtipontianak" target="_blank"
-                           class="mb-6 flex items-center space-x-3 text-gray-700  hover:text-pink-500 transition-colors duration-300 hover:underline">
-                            smtipontianak.sch.id
+                        <a href="https://www.instagram.com/smksmtipontianak" target="_blank" class="w-full max-w-xs">
+                            <div class="flex items-center p-4 hover:bg-slate-100 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-2 text-slate-700 transition transform duration-300">
+                                <img src="{{ asset('images/instagram.png') }}" alt="Instagram" class="w-8 h-8 mr-4">
+                                <span class="font-semibold">@smksmtipontianak</span>
+                            </div>
                         </a>
 
-                        <p><strong>Facebook:</strong><br></p>
-                        <a href="https://www.facebook.com/smtipontianak/" target="_blank"
-                           class="mb-6 flex items-center space-x-3 text-gray-700  hover:text-blue-500 transition-colors duration-300 hover:underline">
-                            SMTI-Pontianak
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/smtipontianak/" target="_blank" class="w-full max-w-xs">
+                            <div class="flex items-center p-4 hover:bg-slate-100 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-2 transition transform duration-300">
+                                <img src="{{ asset('images/facebook.png') }}" alt="Facebook" class="w-8 h-8 mr-4">
+                                <span class="font-semibold">SMTI-Pontianak</span>
+                            </div>
                         </a>
 
-                        <p><strong>Youtube:</strong><br></p>
-                        <a href="https://www.youtube.com/channel/UCarm2nueXuPeVSFjMUWHixA" target="_blank"
-                           class="mb-6 flex items-center space-x-3 text-gray-700  hover:text-red-500 transition-colors duration-300 hover:underline">
-                            SMTI PONTIANAK TV
+                        <!-- YouTube -->
+                        <a href="https://www.youtube.com/channel/UCarm2nueXuPeVSFjMUWHixA" target="_blank" class="w-full max-w-xs">
+                            <div class="flex items-center p-4 hover:bg-slate-100 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-2 transition transform duration-300">
+                                <img src="{{ asset('images/youtube.png') }}" alt="YouTube" class="w-8 h-8 mr-4">
+                                <span class="font-semibold">SMTI PONTIANAK TV</span>
+                            </div>
                         </a>
 
-                        <p><strong>Tiktok:</strong><br></p>
-                        <a href="tiktok.com/@smksmtipontianak" target="_blank"
-                           class="mb-6 flex items-center space-x-3 text-gray-700  hover:text-slate-500 transition-colors duration-300 hover:underline">
-                            @smksmtipontianak
+                        <!-- TikTok -->
+                        <a href="https://www.tiktok.com/@smksmtipontianak" target="_blank" class="w-full max-w-xs">
+                            <div class="flex items-center p-4 hover:bg-slate-100 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-2 transition transform duration-300">
+                                <img src="{{ asset('images/tiktok.png') }}" alt="TikTok" class="w-8 h-8 mr-4">
+                                <span class="font-semibold">@smksmtipontianak</span>
+                            </div>
                         </a>
 
-                        <p><strong>X:</strong><br></p>
-                        <a href="twitter.com/smtiptk" target="_blank"
-                           class="mb-6 flex items-center space-x-3 text-gray-700  hover:text-slate-500 transition-colors duration-300 hover:underline">
-                            @smtiptk
+                        <!-- X (Twitter) -->
+                        <a href="https://twitter.com/smtiptk" target="_blank" class="w-full max-w-xs">
+                            <div class="flex items-center p-4 hover:bg-slate-100 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-2 text-slate-700 transition transform duration-300">
+                                <img src="{{ asset('images/twitter.png') }}" alt="X" class="w-8 h-8 mr-4">
+                                <span class="font-semibold">@smtiptk</span>
+                            </div>
                         </a>
-
-
-
                     </div>
                 </div>
 
                 <div class="flex-1 bg-white p-6 shadow-lg rounded hover:shadow-2xl hover:translate-y-[-10px] transition-all duration-300 ease-in-out">
                     <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Contact Us</h2>
-                    <div class="text-gray-700">
+                    <div class="text-gray-700 mt-20">
                         <p class="mb-4"><strong>Address:</strong><br>Jl. Sulawesi Dalam No.31, Akcaya, Kec. Pontianak Sel., Kota Pontianak, Kalimantan Barat 78113</p>
                         <p class="mb-4"><strong>Phone:</strong><br>0856-5494-1105</p>
                         <p class="mb-4"><strong>Email:</strong><br>infokomsmtiptk@gmail.com</p>
@@ -120,7 +126,7 @@
                 <!-- Our Location -->
                 <div class="flex-1 bg-white p-6 shadow-lg rounded hover:shadow-2xl hover:translate-y-[-10px] transition-all duration-300 ease-in-out">
                     <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Our Location</h2>
-                    <div class="flex justify-center">
+                    <div class="flex justify-center mt-12">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15959.268391237905!2d109.327835!3d-0.044853!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e1d5979aaaf9313%3A0x881894f2ce4337bb!2sSMK-SMTI%20Pontianak!5e0!3m2!1sid!2sid!4v1733030380109!5m2!1sid!2sid"
                             width="100%"
@@ -142,15 +148,4 @@
             </div>
         </footer>
     </div>
-
-
-    <!-- JavaScript for Mobile Menu Toggle -->
-    <script>
-        const btn = document.querySelector('.mobile-menu-button');
-        const menu = document.querySelector('.mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-    </script>
 @endsection

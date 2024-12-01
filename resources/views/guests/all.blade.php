@@ -42,7 +42,8 @@
                         </thead>
                         <tbody>
                         @foreach($guests as $guest)
-                            <tr class="border-b hover:bg-gray-100">
+                            <tr class="border-b hover:bg-gray-100"
+                            onclick="window.location='{{ route('guests.showPersonal', ['id' => $guest->id]) }}';">
                                 <td class="py-4 px-6 text-gray-700">{{ $guest->nama }}</td>
                                 <td class="py-4 px-6 text-gray-700">{{ $guest->asal_instansi }}</td>
                                 <td class="py-4 px-6 text-gray-700">{{ $guest->tujuan }}</td>

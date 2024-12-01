@@ -68,5 +68,12 @@ class GuestController extends Controller
         $guests = Guest::all();
         return view('guests.all', compact('guests'));
     }
+
+    public function showPersonal($id)
+    {
+        $guest = Guest::findOrFail($id);
+
+        return view('guests.personal', compact('guest'));
+    }
 }
 
