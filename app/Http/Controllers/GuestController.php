@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Guest;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use App\Mail\GuestRegisteredMail;
+use Illuminate\Support\Facades\Mail;
 
 
 class GuestController extends Controller
@@ -46,13 +48,16 @@ class GuestController extends Controller
 
         Storage::disk('public')->put('image/' . $imageName, base64_decode($image));
 
-        Guest::create([
+        $guests = Guest::create([
             'nama' => $request->nama,
             'asal_instansi' => $request->asal_instansi,
             'tujuan' => $request->tujuan,
             'nomor_hp' => $request->nomor_hp,
             'foto' => $imageName,
         ]);
+
+        $adminEmail = 'admin@example.com';
+        Mail::to($adminEmail)->send(new GuestRegisteredMail($guests));
 
         return redirect()->route('guests.index')
             ->with('success', 'Guest registered successfully.');
