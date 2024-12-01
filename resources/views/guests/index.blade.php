@@ -43,7 +43,7 @@
         <section id="about" class="bg-white py-20 w-full">
             <!-- About Us -->
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold text-gray-800 mb-8">About Us</h2>
+                <h2 class="text-4xl font-bold text-[rgb(7,38,68)]  mb-8">About Us</h2>
                 <p class="text-gray-600 max-w-4xl mx-auto text-justify">
                     SMK-SMTI Pontianak adalah salah satu dari sembilan SMK di Indonesia yang bernaung di bawah
                     Badan Pengembangan Sumber Daya Manusia Industri (BPSDMI) Kementerian Perindustrian RI.
@@ -67,7 +67,7 @@
             <div class="mx-auto px-6 flex flex-col md:flex-row md:space-x-6">
                 <!-- Follow Us -->
                 <div class="flex-1 bg-white p-6 shadow-lg rounded hover:shadow-2xl hover:translate-y-[-10px] transition-all duration-300 ease-in-out">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Follow Us</h2>
+                    <h2 class="text-3xl font-bold text-[rgb(7,38,68)]  mb-4 text-center">Follow Us</h2>
                     <div class="flex flex-col items-center justify-center mt-10 space-y-6">
                         <!-- Instagram -->
                         <a href="https://www.instagram.com/smksmtipontianak" target="_blank" class="w-full max-w-xs">
@@ -112,8 +112,8 @@
                 </div>
 
                 <div class="flex-1 bg-white p-6 shadow-lg rounded hover:shadow-2xl hover:translate-y-[-10px] transition-all duration-300 ease-in-out">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Contact Us</h2>
-                    <div class="text-gray-700 mt-20">
+                    <h2 class="text-3xl font-bold text-[rgb(7,38,68)]  mb-4 text-center">Contact Us</h2>
+                    <div class="text-[rgb(7,38,68)]  mt-20">
                         <p class="mb-4"><strong>Address:</strong><br>Jl. Sulawesi Dalam No.31, Akcaya, Kec. Pontianak Sel., Kota Pontianak, Kalimantan Barat 78113</p>
                         <p class="mb-4"><strong>Phone:</strong><br>0856-5494-1105</p>
                         <p class="mb-4"><strong>Email:</strong><br>infokomsmtiptk@gmail.com</p>
@@ -125,7 +125,7 @@
 
                 <!-- Our Location -->
                 <div class="flex-1 bg-white p-6 shadow-lg rounded hover:shadow-2xl hover:translate-y-[-10px] transition-all duration-300 ease-in-out">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Our Location</h2>
+                    <h2 class="text-3xl font-bold text-[rgb(7,38,68)] mb-4 text-center">Our Location</h2>
                     <div class="flex justify-center mt-12">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15959.268391237905!2d109.327835!3d-0.044853!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e1d5979aaaf9313%3A0x881894f2ce4337bb!2sSMK-SMTI%20Pontianak!5e0!3m2!1sid!2sid!4v1733030380109!5m2!1sid!2sid"

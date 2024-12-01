@@ -37,7 +37,7 @@
     <!-- Form Section -->
     <div id="form" class="px-10 py-20 bg-gray-50">
         <div class="mb-10 flex justify-center items-center text-center">
-            <h1 class="text-slate-700 font-bold text-4xl">Guest Attendance <br> Register Form</h1>
+            <h1 class="text-[rgb(7,38,68)] font-bold text-4xl">Guest Attendance <br> Registration Form</h1>
         </div>
 
 
