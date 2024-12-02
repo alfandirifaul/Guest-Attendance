@@ -28,8 +28,8 @@
                 <div>
                     <h1 class="text-4xl font-bold text-gray-900 mb-8">Dashboard</h1>
                     <div class="flex space-x-2">
-                        <p id="greeting" class="font-bold text-lg text-slate-700"></p>
-                        <p>|</p>
+                        <p id="greeting" class=" font-bold text-lg text-slate-700"></p>
+                        <p class="animate-pulse duration-1">|</p>
                         <p class="text-slate-600 text-lg font-medium">Admin</p>
                     </div>
                 </div>
