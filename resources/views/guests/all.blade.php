@@ -3,7 +3,7 @@
 @section('content')
     <header>
         <nav class="bg-[rgb(7,38,68)] shadow-lg top-0 fixed w-full z-50">
-            <div class="max-w-7xl mx-auto px-4">
+            <div class="max-w-8xl mx-auto px-20">
                 <div class="flex justify-between items-center">
                     <!-- Logo -->
                     <div class="flex space-x-4">
@@ -15,6 +15,7 @@
                     <!-- Navigation Links -->
                     <div class="hidden md:flex items-center space-x-6 text-xl font-bold">
                         <a href="{{ route('guests.index') }}" class="text-white hover:text-blue-500 transition duration-300">Home</a>
+                        <a href="{{ route('dashboard') }}" class="text-white hover:text-blue-500 transition duration-300">Dashboard</a>
                     </div>
                 </div>
             </div>
@@ -23,9 +24,18 @@
 
     <main>
         <div class="mt-20 container mx-auto px-6 py-10">
-            <h1 class="text-3xl font-bold mb-8 text-center text-gray-800">
-                Dashboard Guest List
-            </h1>
+            <div class="relative flex items-center mb-4">
+                <!-- Back Link -->
+                <div class="absolute left-0">
+                    <a href="{{ route('dashboard') }}" class="text-blue-500 hover:underline">
+                        &laquo; Back to dashboard
+                    </a>
+                </div>
+                <!-- Title -->
+                <h1 class="mx-auto text-3xl font-bold text-gray-800">
+                    {{ $title }}
+                </h1>
+            </div>
 
             @if($guests->isNotEmpty())
                 <div class="overflow-x-auto rounded-lg shadow-lg">

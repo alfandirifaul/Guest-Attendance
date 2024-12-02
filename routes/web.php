@@ -16,12 +16,31 @@ Route::post('/guests/store', function (Request $request){
     return redirect('/');
 });
 
-Route::get('guests/all', [GuestController::class, 'showAll'])->name('guests.showAll');
 
+//Dashboard
+Route::get('/dashboard', [GuestController::class, 'dashboard'])
+    ->name('dashboard');
+
+//Show All Guests List
+Route::get('/dashboard/all', [GuestController::class, 'showAll'])
+    ->name('guests.showAll');
+
+//Show Weekly Guests List
+Route::get('/dashboard/weekly', [GuestController::class, 'weeklyGuests'])
+    ->name('guests.weekly');
+
+//Show Monthly Guests List
+Route::get('/dashboard/monthly', [GuestController::class, 'monthlyGuests'])
+    ->name('guests.monthly');
+
+//Show Yearly Guests List
+Route::get('/dashboard/yearly', [GuestController::class, 'yearlyGuests'])
+    ->name('guests.yearly');
+
+//Show Detail Guests
 Route::get('guests/{id}', [GuestController::class, 'showPersonal'])->name('guests.showPersonal');
+
 
 Route::fallback(function () {
     return redirect()->route('guests.create');
 });
-
-

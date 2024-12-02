@@ -49,8 +49,8 @@
 
                 <!-- Back Link -->
                 <div class="mt-6 text-center">
-                    <a href="{{ route('guests.showAll') }}" class="text-blue-500 hover:underline">
-                        &laquo; Back to Guest List
+                    <a href="{{ url()->previous() }}" class="text-blue-500 hover:underline">
+                        &laquo; Back to list
                     </a>
                 </div>
             </div>

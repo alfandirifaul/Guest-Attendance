@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Guest;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Mail\GuestRegisteredMail;
 use Illuminate\Support\Facades\Mail;
-
 
 class GuestController extends Controller
 {
@@ -66,7 +66,10 @@ class GuestController extends Controller
     public function showAll()
     {
         $guests = Guest::all();
-        return view('guests.all', compact('guests'));
+        return view('guests.all', [
+            'title' => 'All Guest List',
+            'guests' => $guests,
+        ]);
     }
 
     public function showPersonal($id)
@@ -75,5 +78,69 @@ class GuestController extends Controller
 
         return view('guests.personal', compact('guest'));
     }
+
+    public function dashboard()
+    {
+        $recentGuests = Guest::orderBy('created_at', 'desc')
+            ->take(5)
+            ->get();
+
+        $weeklyGuests = Guest::whereBetween('created_at', [
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek()
+        ])->count();
+
+        $monthlyGuests = Guest::whereMonth('created_at', Carbon::now()->month)
+            ->whereYear('created_at', Carbon::now()->year)
+            ->count();
+
+        $yearlyGuests = Guest::whereYear('created_at', Carbon::now()->year)
+            ->count();
+
+        $totalGuests = Guest::count();
+
+        return view('guests.dashboard', compact(
+            'recentGuests', 'weeklyGuests', 'monthlyGuests', 'yearlyGuests', 'totalGuests'
+        ));
+    }
+
+    public function weeklyGuests()
+    {
+        $weeklyGuests = Guest::whereBetween('created_at', [
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek()
+        ])->get();
+
+        return view('guests.all', [
+            'title' => 'Weekly Guests',
+            'guests' => $weeklyGuests,
+        ]);
+    }
+
+    public function monthlyGuests()
+    {
+        $monthlyGuests = Guest::whereMonth('created_at', [
+            Carbon::now()->month
+        ])->whereYear('created_at', Carbon::now()->year)
+            ->get();
+
+        return view('guests.all', [
+            'title' => 'Monthly Guests',
+            'guests' => $monthlyGuests,
+        ]);
+    }
+
+    public function yearlyGuests()
+    {
+        $yearlyGuests = Guest::whereYear('created_at', Carbon::now()->year)
+            ->get();
+
+        return view('guests.all', [
+            'title' => 'Yearly Guests',
+            'guests' => $yearlyGuests
+        ]);
+    }
+
+
 }
 
