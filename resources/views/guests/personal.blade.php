@@ -4,7 +4,7 @@
     <!-- Navigation Bar -->
     <header>
         <nav class="bg-[rgb(7,38,68)] shadow-lg top-0 fixed w-full z-50">
-            <div class="max-w-7xl mx-auto px-4">
+            <div class="max-w-8xl mx-auto px-20">
                 <div class="flex justify-between items-center">
                     <!-- Logo -->
                     <div class="flex space-x-4">
@@ -16,6 +16,8 @@
                     <!-- Navigation Links -->
                     <div class="hidden md:flex items-center space-x-6 text-xl font-bold">
                         <a href="{{ route('guests.index') }}" class="text-white hover:text-blue-500 transition duration-300">Home</a>
+                        <a href="{{ route('dashboard') }}" class="text-white hover:text-blue-500 transition duration-300">Dashboard</a>
+
                     </div>
                 </div>
             </div>
@@ -32,9 +34,7 @@
                 <!-- Picture -->
                 <div class="flex justify-center mt-10 mb-6">
                     <img src="{{ asset('storage/image/' . $guest->foto) }}" alt="{{ $guest->nama }}"
-                         class="rounded-lg transform transition
-                         duration-300 ease-in-out hover:scale-150"
-                         style="display: block; width: auto; height: auto; max-width: none;">
+                         class="rounded-lg">
                 </div>
 
                 <!-- Description -->

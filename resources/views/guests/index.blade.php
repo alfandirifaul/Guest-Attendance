@@ -14,10 +14,10 @@
                                 <span class="font-bold text-white text-2xl">SMK-SMTI PONTIANAK</span>
                             </a>
                         </div>
-                        <!-- Navigation Links -->
-                        <div class="hidden md:flex items-center space-x-6 font-bold text-xl">
-                            <a href="#" class="py-2 px-4 text-white hover:text-blue-500">Home</a>
-                            <a href="#about" class="py-2 px-4 text-white hover:text-blue-500">More</a>
+
+                        <div class="hidden md:flex items-center space-x-6 text-xl font-bold">
+                            <a href="#" class="text-white hover:text-blue-500 transition duration-300">Home</a>
+                            <a href="#about" class="text-white hover:text-blue-500 transition duration-300">More</a>
                         </div>
                     </div>
                 </div>
@@ -27,17 +27,25 @@
         <main>
             <section class="bg-[url('{{ asset('images/smti-image.jpg') }}')] bg-cover bg-center bg-no-repeat text-white py-20 mt-2">
                 <div class="container mx-auto px-20 text-center relative flex justify-center items-center">
+                    <!-- Background Overlay -->
                     <div class="absolute inset-0 bg-slate-700 opacity-45 py-50 px-50 top-[-25px] bottom-[-25px]"></div>
+
+                    <div id="time-container" class="absolute top-5 left-0 right-0 mx-auto flex flex-col items-center text-white h-[3.5rem] mb-10">
+                        <p id="current-time" class="text-sm"></p>
+                        <p id="greeting" class="text-2xl font-semibold"></p> <!-- Greeting remains with no extra margin -->
+                    </div>
+
                     <div class="relative">
-                        <h2 class="mt-20 text-6xl font-bold mb-8">Welcome to SMK-SMTI Pontianak <br> Guest Registration Website</h2>
-                        <p class="mb-36 font-medium text-xl text-justify mt-20">
+                        <h2 class="mt-36 text-6xl font-bold mb-6">Welcome to SMK-SMTI Pontianak <br> Guest Registration Website</h2>
+                        <p class="mb-20 font-medium text-xl text-justify mt-10">
                             This platform is exclusively designed for recording the identities and details of guests who visit SMK-SMTI Pontianak.
                             The information collected here is solely used for administrative purposes and to enhance our visitor management system.
-                            Please ensure that the details you provide are accurate and complete. Your cooperation is highly appreciated. Thank you!</p>
-                        <p class="mb-4 font-bold text-white">Please register your identity to inform us your visit.</p>
+                            Please ensure that the details you provide are accurate and complete. Your cooperation is highly appreciated. Thank you!
+                        </p>
+                        <p class="mb-2 font-bold text-white mt-10">Please register your identity to inform us your visit.</p>
                         <a href="{{ route('guests.create') }}"
                            class=" mb-20 mt-5 bg-[rgb(222,170,21)] hover:bg-[rgb(222,200,51)]  text-white py-4 px-8 w-[200px] text-lg font-semibold rounded-lg inline-block
-                       transition transform hover:scale-105 duration-300">
+                                    transition transform hover:scale-105 duration-300">
                             Register
                         </a>
                     </div>
@@ -46,14 +54,14 @@
 
             <section id="about" class="bg-white py-20 w-full">
                 <!-- About Us -->
-                <div class="container mx-auto px-6 text-center">
+                <div class="mx-auto px-6 text-center">
                     <h2 class="text-4xl font-bold text-[rgb(7,38,68)]  mb-8">About Us</h2>
                     <p class="text-gray-600 max-w-4xl mx-auto text-justify">
                         SMK-SMTI Pontianak adalah salah satu dari sembilan SMK di Indonesia yang bernaung di bawah
                         Badan Pengembangan Sumber Daya Manusia Industri (BPSDMI) Kementerian Perindustrian RI.
                         SMK SMTI Pontianak yang dulunya adalah STMA didirikan pada tanggal 15 Januari 1968 yang dikukuhkan dengan SK Gubernur KDH Tk.1 Kalimantan Barat No. 01/11-E/68. Pengelolaan SMTI Pontianak diserah terimakan dari Pemda Tk. 1 Kalimantan Barat ke Pihak Departemen Perindustrian. Pusat Pembinaan Pelatihan Keterampilan dan Kejuruan Industri. Sedangkan ijazah SMK SMTI dinilai, dihargai dan disamakan dengan ijazah Sekolah Menengah Kejuruan Negeri berdasarkan SK Mendikbud RI No. 1277/C/Kep/1/87.
 
-                        SMK SMTI Pontianak merupakan Sekolah Menengah Kejuruan Negeri di bawah Kementerian Perindustrian atau pada pendataan sekolah di Kemdikbud yaitu SMKN TI Pontianak dengan NPSN 30108179 memiliki empat  program studi yaitu:
+                        SMK SMTI Pontianak merupakan Sekolah Menengah Kejuruan Negeri di bawah Kementerian Perindustrian atau pada pendataan sekolah di Kemdikbud yaitu SMKN TI Pontianak dengan NPSN 30108179 memiliki empat program studi yaitu:
                         <br>
 
                         1) Kimia Industri <br>
@@ -123,7 +131,6 @@
                             <p class="mb-4"><strong>Email:</strong><br>infokomsmtiptk@gmail.com</p>
                             <p><strong>Website:</strong><br></p>
                             <a href="https://smtipontianak.sch.id/" class="mb-4 hover:underline hover:text-blue-500">smtipontianak.sch.id</a>
-
                         </div>
                     </div>
 
@@ -145,7 +152,6 @@
                 </div>
             </section>
         </main>
-
 
         <!-- Footer -->
         <footer class="bg-[rgb(222,170,21)] py-6">
