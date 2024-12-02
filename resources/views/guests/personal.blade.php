@@ -17,50 +17,65 @@
                     <div class="hidden md:flex items-center space-x-6 text-xl font-bold">
                         <a href="{{ route('guests.index') }}" class="text-white hover:text-blue-500 transition duration-300">Home</a>
                         <a href="{{ route('dashboard') }}" class="text-white hover:text-blue-500 transition duration-300">Dashboard</a>
-
                     </div>
                 </div>
             </div>
         </nav>
     </header>
 
-    <main>
-        <div class="bg-slate-50 mt-20 px-6 py-10">
-            <h1 class="text-3xl font-bold mb-8 text-center text-gray-800">
-                Guest Details
-            </h1>
-
-            <div class="bg-white shadow-md rounded-lg p-6 max-w-4xl mx-auto">
-                <!-- Picture -->
-                <div class="flex justify-center mt-10 mb-6">
+    <main class="bg-gray-100 min-h-screen pt-40 pb-2">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex justify-center items-center mb-16 text-slate-700 font-bold text-6xl">
+                <h1 class="text-[rgb(7,38,68)]">
+                    Guest Detail
+                </h1>
+            </div>
+            <div class="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden w-full hover:scale-105 transition transform duration-300">
+                <div class="bg-gradient-to-r from-[rgb(222,170,21)] via-yellow-400 to-[rgb(222,200,51)] flex items-center justify-center p-8 md:w-1/2">
                     <img src="{{ asset('storage/image/' . $guest->foto) }}" alt="{{ $guest->nama }}"
-                         class="rounded-lg">
+                         class="rounded-md border-4 border-white shadow-md max-h-96">
                 </div>
-
-                <!-- Description -->
-                <div class="text-center">
-                    <h2 class="text-3xl font-bold mb-2">{{ $guest->nama }}</h2>
-                    <p class="text-gray-700 mb-1"><strong>Origin:</strong> {{ $guest->asal_instansi }}</p>
-                    <p class="text-gray-700 mb-1"><strong>Purpose:</strong> {{ $guest->tujuan }}</p>
-                    <p class="text-gray-700 mb-1"><strong>Phone Number:</strong> {{ $guest->nomor_hp }}</p>
-                    <p class="text-gray-700"><strong>Time Registration:</strong>
-                        {{ $guest->created_at->format('F j, Y, g:i a') }}</p>
-                </div>
-
-                <!-- Back Link -->
-                <div class="mt-6 text-center">
-                    <a href="{{ url()->previous() }}" class="text-blue-500 hover:underline">
-                        &laquo; Back to list
-                    </a>
+                <div class="p-24 md:w-1/2 flex flex-col justify-center space-x-4">
+                    <h1 class="text-3xl font-bold text-[rgb(7,38,68)] mb-6 pl-4">{{ $guest->nama }}</h1>
+                    <div class="space-y-4 text-[rgb(7,38,68)]">
+                        <div class="flex items-center">
+                            <span class="font-semibold text-[rgb(222,170,21)] w-32">Origin:</span>
+                            <span class="pl-6 font-medium">{{ $guest->asal_instansi }}</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="font-semibold text-[rgb(222,170,21)] w-32">Purpose:</span>
+                            <span class="pl-6 font-medium">{{ $guest->tujuan }}</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="font-semibold text-[rgb(222,170,21)] w-32">Phone:</span>
+                            <span class="pl-6 font-medium">{{ $guest->nomor_hp }}</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="font-semibold text-[rgb(222,170,21)] w-32">Registered Date:</span>
+                            <span class="pl-6 font-medium">{{ $guest->created_at->format('l, j F Y g:i a') }}</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="font-semibold text-[rgb(222,170,21)] w-32">Registered Id:</span>
+                            <span class="pl-6 font-medium">{{ $guest->id }}</span>
+                        </div>
+                    </div>
+                    <div class="mt-24 mb-[-60px]">
+                        <a href="{{ url()->previous() }}"
+                           class="inline-block px-6 py-3 bg-gradient-to-r from-[rgb(222,170,21)] to-yellow-400 text-white rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            &laquo; Back to List
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[rgb(7,38,68)] py-6 mt-auto">
+    <footer class="bg-[rgb(7,38,68)] py-6">
         <div class="container mx-auto px-6 text-center">
-            <p class="text-white">&copy; {{ date('Y') }} SMK-SMTI Pontianak. All rights reserved.</p>
+            <p class="text-white text-sm lg:text-base">
+                &copy; {{ date('Y') }} SMK-SMTI Pontianak. All rights reserved.
+            </p>
         </div>
     </footer>
 @endsection

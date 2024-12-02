@@ -27,7 +27,7 @@
             <div class="relative flex items-center mb-4">
                 <!-- Back Link -->
                 <div class="absolute left-0">
-                    <a href="{{ route('dashboard') }}" class="text-blue-500 hover:underline">
+                    <a href="{{ route('dashboard') }}" class="text-[rgb(222,170,21)] hover:underline">
                         &laquo; Back to dashboard
                     </a>
                 </div>

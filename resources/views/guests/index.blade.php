@@ -32,7 +32,7 @@
 
                     <div id="time-container" class="absolute top-5 left-0 right-0 mx-auto flex flex-col items-center text-white h-[3.5rem] mb-10">
                         <p id="current-time" class="text-sm"></p>
-                        <p id="greeting" class="text-2xl font-semibold"></p> <!-- Greeting remains with no extra margin -->
+                        <p id="greeting" class="text-3xl font-semibold"></p>
                     </div>
 
                     <div class="relative">
