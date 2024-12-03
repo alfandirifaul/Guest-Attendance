@@ -43,62 +43,65 @@
                 <h1 class="text-[rgb(7,38,68)] font-bold text-4xl">Guest Attendance <br> Registration Form</h1>
             </div>
 
-
-
-            <!-- Form -->
-            <form class="bg-white shadow-md rounded-lg p-8 space-y-6 max-w-3xl mx-auto" method="POST" action="{{ route('guests.store') }}">
+            <!-- Form Container -->
+            <form class="bg-white shadow-md rounded-lg p-8 space-y-6 max-w-5xl mx-auto" method="POST" action="{{ route('guests.store') }}">
                 @csrf
-                <!-- Nama -->
-                <div class="flex flex-col">
-                    <label for="nama" class="text-lg font-semibold text-gray-700 mb-2">Nama:</label>
-                    <x-text-input value="{{ old('nama') }}" type="text" name="nama" id="nama" class="form-input p-3 border border-gray-300 rounded-lg" required />
-                    @error('nama')
-                    <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
-                    @enderror
-                </div>
 
-                <!-- Asal Instansi -->
-                <div class="flex flex-col">
-                    <label for="asal_instansi" class="text-lg font-semibold text-gray-700 mb-2">Asal Instansi:</label>
-                    <x-text-input value="{{ old('asal_instansi') }}" type="text" name="asal_instansi" id="asal_instansi" class="form-input p-3 border border-gray-300 rounded-lg" required />
-                    @error('asal_instansi')
-                    <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
-                    @enderror
-                </div>
+                <!-- Inputs and Camera Container -->
+                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-10 lg:space-y-0 lg:space-x-10">
+                    <!-- Input Fields -->
+                    <div class="flex flex-col space-y-6 lg:w-3/5">
+                        <!-- Nama -->
+                        <div class="flex flex-col">
+                            <label for="nama" class="text-lg font-semibold text-gray-700 mb-2">Nama:</label>
+                            <x-text-input value="{{ old('nama') }}" type="text" name="nama" id="nama" class="form-input p-3 border border-gray-300 rounded-lg" required />
+                            @error('nama')
+                                <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
+                            @enderror
+                        </div>
 
-                <!-- Tujuan -->
-                <div class="flex flex-col">
-                    <label for="tujuan" class="text-lg font-semibold text-gray-700 mb-2">Tujuan:</label>
-                    <x-text-input value="{{ old('tujuan') }}" type="text" name="tujuan" id="tujuan" class="form-input p-3 border border-gray-300 rounded-lg" required />
-                    @error('tujuan')
-                    <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
-                    @enderror
-                </div>
+                        <!-- Asal Instansi -->
+                        <div class="flex flex-col">
+                            <label for="asal_instansi" class="text-lg font-semibold text-gray-700 mb-2">Asal Instansi:</label>
+                            <x-text-input value="{{ old('asal_instansi') }}" type="text" name="asal_instansi" id="asal_instansi" class="form-input p-3 border border-gray-300 rounded-lg" required />
+                            @error('asal_instansi')
+                                <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
+                            @enderror
+                        </div>
 
-                <!-- Nomor HP -->
-                <div class="flex flex-col">
-                    <label for="nomor_hp" class="text-lg font-semibold text-gray-700 mb-2">Nomor HP:</label>
-                    <x-text-input value="{{ old('nomor_hp') }}" type="number" name="nomor_hp" id="nomor_hp" class="form-input p-3 border border-gray-300 rounded-lg" required />
-                    @error('nomor_hp')
-                    <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
-                    @enderror
-                </div>
+                        <!-- Tujuan -->
+                        <div class="flex flex-col">
+                            <label for="tujuan" class="text-lg font-semibold text-gray-700 mb-2">Tujuan:</label>
+                            <x-text-input value="{{ old('tujuan') }}" type="text" name="tujuan" id="tujuan" class="form-input p-3 border border-gray-300 rounded-lg" required />
+                            @error('tujuan')
+                                <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
+                            @enderror
+                        </div>
 
-                <!-- Capture Photo -->
-                <div class="flex flex-col">
-                    <label for="foto" class="text-lg font-semibold text-gray-700 mb-4">Capture Photo:</label>
-                    <div class="flex justify-center">
-                        <video id="video" class="rounded-md border" width="1080" height="240" autoplay></video>
+                        <!-- Nomor HP -->
+                        <div class="flex flex-col">
+                            <label for="nomor_hp" class="text-lg font-semibold text-gray-700 mb-2">Nomor HP:</label>
+                            <x-text-input value="{{ old('nomor_hp') }}" type="number" name="nomor_hp" id="nomor_hp" class="form-input p-3 border border-gray-300 rounded-lg" required />
+                            @error('nomor_hp')
+                                <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
-                    @error('foto')
-                    <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
-                    @enderror
-                    <button type="button" id="snap"
-                            class="mt-4 bg-[rgb(222,170,21)] hover:bg-[rgb(222,200,51)] text-white py-2 px-6 rounded-lg shadow-md transition duration-300">
-                        Capture Photo
-                    </button>
-                    <canvas id="canvas" class="hidden"></canvas>
-                    <input value="{{ old('foto') }}" type="hidden" name="foto" id="foto">
+
+                    <!-- Camera Section -->
+                    <div class="bg-slate-100 rounded-lg p-9 lg:w-4/5 flex flex-col items-center">
+                        <h2 class="text-lg font-semibold text-gray-700 mb-4">Capture Photo:</h2>
+                        <video id="video" class="rounded-md border mb-4" width="320" height="240" autoplay></video>
+                        @error('foto')
+                            <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
+                        @enderror
+                        <button type="button" id="snap"
+                                class="bg-[rgb(222,170,21)] hover:bg-[rgb(222,200,51)] text-white py-2 px-6 rounded-lg shadow-md transition duration-300">
+                            Capture Photo
+                        </button>
+                        <canvas id="canvas" class="hidden"></canvas>
+                        <input value="{{ old('foto') }}" type="hidden" name="foto" id="foto">
+                    </div>
                 </div>
 
                 <!-- Submit Button -->
@@ -111,7 +114,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[rgb(7,38,68)] text-white py-6 mt-20">
+    <footer class="bg-[rgb(7,38,68)] text-white py-6">
         <div class="text-center">
             <p>&copy; {{ date('Y') }} SMK-SMTI Pontianak. All rights reserved.</p>
         </div>

@@ -30,9 +30,10 @@
                     <!-- Background Overlay -->
                     <div class="absolute inset-0 bg-slate-700 opacity-45 py-50 px-50 top-[-25px] bottom-[-25px]"></div>
 
-                    <div id="time-container" class="absolute top-5 left-0 right-0 mx-auto flex flex-col items-center text-white h-[3.5rem] mb-10">
+                    <div id="time-container" class="absolute top-5 left-0 right-0 mx-auto flex flex-col items-center text-white h-[3.5rem] mb-6">
                         <p id="current-time" class="text-sm"></p>
-                        <p id="greeting" class="text-3xl font-semibold"></p>
+                        <!-- Halo -->
+                        <p id="halo" class="text-4xl font-bold mt-4"></p>
                     </div>
 
                     <div class="relative">
@@ -160,4 +161,64 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        //***************** S: halo
+        const halos = {
+            en: "Hello",
+            id: "Halo",
+            fr: "Bonjour",
+            de: "Hallo",
+            jp: "こんにちは",
+            kr: "안녕하세요",
+            zh: "你好",
+            es: "Hola",
+            it: "Ciao",
+            ru: "Привет",
+            pt: "Olá",
+            ar: "مرحبا",
+            hi: "नमस्ते",
+            th: "สวัสดี",
+            vi: "Xin chào",
+            ph: "Kumusta",
+        };
+
+        const haloLanguages = Object.keys(halos);
+
+        function haloAnimation(elementId, text) {
+            const element = document.getElementById(elementId);
+            element.textContent = "";
+            let index = 0;
+
+            const interval = setInterval(() => {
+                if (index < text.length) {
+                    element.textContent += text[index];
+                    index++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 300); // interval to set speed for each letter
+        }
+
+        function getHalo(language) {
+            return halos[language];
+        }
+
+        function startAlternatingHalo() {
+            let currentHaloLanguageIndex = 0;
+
+            function updateHalo() {
+                const currentLanguage = haloLanguages[currentHaloLanguageIndex];
+                const halo = getHalo(currentLanguage);
+                haloAnimation("halo", halo);
+
+                currentHaloLanguageIndex = (currentHaloLanguageIndex + 1) % haloLanguages.length;
+            }
+
+            updateHalo();
+            setInterval(updateHalo, 10000); // interval to change every language
+        }
+        //***************** E: halo
+        startAlternatingHalo();
+    </script>
 @endsection

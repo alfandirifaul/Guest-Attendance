@@ -15,6 +15,13 @@
                     <!-- Navigation Links -->
                     <div class="hidden md:flex items-center space-x-6 text-xl font-bold">
                         <a href="{{ route('guests.index') }}" class="text-white hover:text-blue-500 transition duration-300">Home</a>
+
+                        <!-- IF YOU USE THE LOGIN AUTH, UNCOMMENT CODE BELOW -->
+{{--                         <form action="{{ route('logout') }}" method="POST">--}}
+{{--                            @csrf--}}
+{{--                            <button class="text-white hover:text-blue-500 transition duration-300">Logout</button>--}}
+{{--                        </form> --}}
+
                     </div>
                 </div>
             </div>
@@ -30,7 +37,12 @@
                     <div class="flex space-x-2">
                         <p id="greeting" class=" font-bold text-lg text-slate-700"></p>
                         <p class="animate-pulse duration-1">|</p>
+
+                        <!-- COMMENT CODE BELOW IF YOU USE LOGIN AUTH -->
                         <p class="text-slate-600 text-lg font-medium">Admin</p>
+
+                        <!-- UNCOMMENT CODE BELOW IF YOU USE LOGIN AUTH -->
+{{--                        <p class="text-slate-600 text-lg font-medium">{{ ucfirst($user->name) }}</p>--}}
                     </div>
                 </div>
 
@@ -46,30 +58,30 @@
                 <!-- Weekly Guests -->
                 <a href="{{ route('guests.weekly') }}" class="bg-gradient-to-r from-blue-500 to-blue-700 text-white p-6 rounded-lg shadow hover:scale-105 transition duration-300">
                     <h2 class="text-lg font-semibold">Total Guests This Week</h2>
-                    <p class="text-4xl font-bold">{{ $weeklyGuests }}</p>
+                    <p class="text-4xl font-bold">{{ $weeklyGuests }} Guests</p>
                 </a>
 
                 <!-- Monthly Guests -->
                 <a href="{{ route('guests.monthly') }}" class="bg-gradient-to-r from-green-500 to-green-700 text-white p-6 rounded-lg shadow hover:scale-105 transition duration-300">
                     <h2 class="text-lg font-semibold">Total Guests This Month</h2>
-                    <p class="text-4xl font-bold">{{ $monthlyGuests }}</p>
+                    <p class="text-4xl font-bold">{{ $monthlyGuests }} Guests</p>
                 </a>
 
                 <!-- Yearly Guests -->
                 <a href="{{ route('guests.yearly') }}" class="bg-gradient-to-r from-purple-500 to-purple-700 text-white p-6 rounded-lg shadow hover:scale-105 transition duration-300">
                     <h2 class="text-lg font-semibold">Total Guests This Year</h2>
-                    <p class="text-4xl font-bold">{{ $yearlyGuests }}</p>
+                    <p class="text-4xl font-bold">{{ $yearlyGuests }} Guests</p>
                 </a>
 
                 <!-- All-Time Guests -->
                 <a href="{{ route('guests.showAll') }}" class="bg-gradient-to-r from-orange-500 to-orange-700 text-white p-6 rounded-lg shadow hover:scale-105 transition duration-300">
                     <h2 class="text-lg font-semibold">Total Guests (All Time)</h2>
-                    <p class="text-4xl font-bold">{{ $totalGuests }}</p>
+                    <p class="text-4xl font-bold">{{ $totalGuests }} Guests</p>
                 </a>
             </div>
 
             <!-- Recently Added Guests -->
-            <div class="mt-8">
+            <div class="mt-12">
                 <h2 class="text-2xl font-bold mb-4">Recently Registered Guests</h2>
                 <div class="bg-white rounded-lg shadow overflow-hidden">
                     <table class="table-auto w-full">
@@ -78,7 +90,7 @@
                             <th class="px-6 py-3 text-left text-sm font-semibold ">Name</th>
                             <th class="px-6 py-3 text-left text-sm font-semibold ">Origin</th>
                             <th class="px-6 py-3 text-left text-sm font-semibold ">Purpose</th>
-                            <th class="px-6 py-3 text-left text-sm font-semibold ">Time Added</th>
+                            <th class="px-6 py-3 text-left text-sm font-semibold ">Time</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -103,5 +115,93 @@
             <p class="text-white">&copy; {{ date('Y') }} SMK-SMTI Pontianak. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        //***************** S: greeting
+        const greetings = {
+            en: {
+                morning: "Good Morning",
+                afternoon: "Good Afternoon",
+                evening: "Good Evening"
+            },
+            id: {
+                morning: "Selamat Pagi",
+                afternoon: "Selamat Siang",
+                evening: "Selamat Malam"
+            },
+            fr: {
+                morning: "Bonjour",
+                afternoon: "Bon Après-midi",
+                evening: "Bonsoir"
+            },
+            de: {
+                morning: "Guten Morgen",
+                afternoon: "Guten Tag",
+                evening: "Guten Abend"
+            },
+            jp: {
+                morning: "おはようございます",
+                afternoon: "こんにちは",
+                evening: "こんばんは"
+            },
+            kr: {
+                morning: "좋은 아침",
+                afternoon: "안녕하세요",
+                evening: "안녕하세요"
+            },
+            zh: {
+                morning: "早上好",
+                afternoon: "下午好",
+                evening: "晚上好"
+            },
+
+        };
+
+        const languages = Object.keys(greetings);
+
+        function greetingAnimation(elementId, text) {
+            const element = document.getElementById(elementId);
+            element.textContent = "";
+            let index = 0;
+
+            const interval = setInterval(() => {
+                if (index < text.length) {
+                    element.textContent += text[index];
+                    index++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 300); // interval to set speed each language
+        }
+
+        function getGreeting(language) {
+            const hour = new Date().getHours();
+            if (hour < 12) {
+                return greetings[language].morning;
+            } else if (hour < 17) {
+                return greetings[language].afternoon;
+            } else {
+                return greetings[language].evening;
+            }
+        }
+
+        function startAlternatingGreeting() {
+
+            let currentLanguageIndex = 0;
+
+            function updateGreeting() {
+                const currentLanguage = languages[currentLanguageIndex];
+                const greeting = getGreeting(currentLanguage);
+                greetingAnimation("greeting", greeting);
+
+                currentLanguageIndex = (currentLanguageIndex + 1) % languages.length;
+            }
+            updateGreeting();
+            setInterval(updateGreeting, 10000); // interval to change every language
+        }
+        //***************** E: greeting
+
+        startAlternatingGreeting();
+    </script>
 
 @endsection

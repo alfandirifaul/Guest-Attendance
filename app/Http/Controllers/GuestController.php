@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Guest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Mail\GuestRegisteredMail;
@@ -14,7 +16,8 @@ class GuestController extends Controller
 {
     public function index()
     {
-        $guests = Guest::all();
+        $guests = Guest::orderBy('created_at', 'desc')
+            ->get();
         return view('guests.index', compact('guests'));
     }
 
@@ -37,7 +40,7 @@ class GuestController extends Controller
                 'tujuan.required' => 'Tujuan kunjungan harus diisi.',
                 'nomor_hp.required' => 'Nomor HP wajib diisi.',
                 'nomor_hp.digits_between' => 'Nomor HP harus terdiri dari 9-15 digit.',
-                'foto.required' => 'Lakukan Capture Photo'
+                'foto.required' => 'Lakukan Capture Photo',
             ]);
 
 
@@ -65,7 +68,8 @@ class GuestController extends Controller
 
     public function showAll()
     {
-        $guests = Guest::all();
+        $guests = Guest::orderBy('created_at', 'desc')
+            ->get();
         return view('guests.all', [
             'title' => 'All Guest List',
             'guests' => $guests,
@@ -99,8 +103,15 @@ class GuestController extends Controller
 
         $totalGuests = Guest::count();
 
+        $user = Auth::user();
+
         return view('guests.dashboard', compact(
-            'recentGuests', 'weeklyGuests', 'monthlyGuests', 'yearlyGuests', 'totalGuests'
+            'recentGuests',
+            'weeklyGuests',
+            'monthlyGuests',
+            'yearlyGuests',
+            'totalGuests',
+            'user',
         ));
     }
 
@@ -109,7 +120,8 @@ class GuestController extends Controller
         $weeklyGuests = Guest::whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek()
-        ])->get();
+        ])->orderBy('created_at', 'desc')
+            ->get();
 
         return view('guests.all', [
             'title' => 'Weekly Guests',
@@ -122,6 +134,7 @@ class GuestController extends Controller
         $monthlyGuests = Guest::whereMonth('created_at', [
             Carbon::now()->month
         ])->whereYear('created_at', Carbon::now()->year)
+            ->orderBy('created_at', 'desc')
             ->get();
 
         return view('guests.all', [
@@ -133,6 +146,7 @@ class GuestController extends Controller
     public function yearlyGuests()
     {
         $yearlyGuests = Guest::whereYear('created_at', Carbon::now()->year)
+            ->orderBy('created_at', 'desc')
             ->get();
 
         return view('guests.all', [
@@ -140,7 +154,6 @@ class GuestController extends Controller
             'guests' => $yearlyGuests
         ]);
     }
-
 
 }
 

@@ -8,7 +8,7 @@ This is a Laravel-based Guest Management System with a Dockerized environment. F
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop) installed and running
 - [Visual Studio Code](https://code.visualstudio.com/) installed
-- PHP and Composer installed on your system
+- [PHP](https://www.php.net/downloads.php) and [Composer](https://getcomposer.org/download/) installed on your system
 
 ---
 
@@ -29,10 +29,6 @@ This will start the Laravel development server. You can access the application a
 ```
 http://127.0.0.1:8000
 ```
-And if you want to check the all guest list that has been registered, please access:
-```
-http://localhost:8000/guests/all
-```
 
 ### Step 4: Start Docker Services
 Open a new terminal in Visual Studio Code, navigate to the docker-serve/ directory, and start the Docker containers:
@@ -52,12 +48,49 @@ passwword: root
 database: 
 ```
 
-### Step 5: Run Migrations
-Open a new terminal in Visual Studio Code and set up the database schema by running Laravel migrations:
+### Step 5: Run Migrations 
+Open a new terminal in Visual Studio Code and set up the database schema by running Laravel migrations and you must store the admin auth for login the dashboard
 ```
 php artisan migrate
+php artisan db:seed
 ```
 
+
+### Step 6: Login to Dashboard Page to Manage and Track Guests
+If you want to go the dashboard, you can access the page at:
+```
+http://127.0.0.1:8000/dashboard
+```
+
+And you must login to the page first by the default auth is: 
+```
+username: admin
+password: admin
+```
+
+### Step 7: Change the Admin Authentication to Login the Dashboard if You Need
+Open `database/seeders/DatabaseSeeder.php` file and then change the comment line if you need
+```
+public function run(): void
+    {
+        // CHANGE THE ADMIN AUTH BELOW
+        User::factory()->create([
+            'name' => 'admin', // USERNAME
+            'email' => 'admin@smti.edu', // EMAIL
+            'password' => Hash::make('admin'), // PASSWORD
+        ]);
+    }
+```
+Change `'admin'` as `your username` and `'admin'` as `your password` and after than you must store it to database using the command line below:
+```
+php artisan db:seed
+```
+
+#### Consider to always remember your username and password, if you forget about your username and password, you can do this step to change your auth login
+
+If you forget your auth login, change the `name`, `email`, `password` is absolutely different with before.
+
+---
 ### Notes
 If you encounter any errors during setup, try the following:
 1.	**Restart Docker Desktop:** Ensure all containers are running without errors.
@@ -66,7 +99,7 @@ If you encounter any errors during setup, try the following:
 php artisan config:clear
 php artisan cache:clear
 ```
-3. **Check Docker Logs:** inspect logs for any issues with the containers:
+3. **Check Docker Logs:** Inspect logs for any issues with the containers:
 ```
 docker compose logs
 ```
@@ -74,7 +107,14 @@ docker compose logs
 ```
 php artisan migrate:fresh
 ```
+5. **Error When on Login Page:** Try to install requirement below:
+```
+composer require laravel/breeze --dev
+php artisan breeze:install
+php artisan migrate
+```
 
+---
 ## License
 
 This project is licensed under the MIT License.
