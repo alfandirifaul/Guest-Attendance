@@ -143,6 +143,7 @@ return [
         Illuminate\Cache\CacheServiceProvider::class,
         Illuminate\Routing\RoutingServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Illuminate\Mail\MailServiceProvider::class,
     ],
 
     'aliases' => [
