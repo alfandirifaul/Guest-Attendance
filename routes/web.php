@@ -19,6 +19,15 @@ Route::post('/guests/store', function (Request $request){
     return redirect('/');
 });
 
+// Download to excel file
+Route::get('guests/export', function(){
+    return Excel::download(new \App\Exports\GuestsExport(), 'data_tamu_smti.xlsx');
+})->name('guests.export');
+
+
+
+
+
 //********************* IF YOU WANT TO USE THE LOGIN PAGE FOR DASHBOARD, COMMENT CODE BELOW
 // Access Dashboard
 Route::get('/dashboard', [GuestController::class, 'dashboard'])

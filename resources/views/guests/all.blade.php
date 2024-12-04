@@ -35,6 +35,12 @@
                 <h1 class="mx-auto text-3xl font-bold text-gray-800">
                     {{ $title }}
                 </h1>
+
+                <a href="{{ route('guests.export') }}"
+                   class="inline-block px-6 py-3 bg-gradient-to-r from-[rgb(222,170,21)] to-yellow-400
+                           text-white rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300">
+                    Export File
+                </a>
             </div>
 
             @if($guests->isNotEmpty())
@@ -53,7 +59,7 @@
                         <tbody>
                         @foreach($guests as $guest)
                             <tr class="border-b hover:bg-gray-100"
-                            onclick="window.location='{{ route('guests.showPersonal', ['id' => $guest->id]) }}';">
+                                onclick="window.location='{{ route('guests.showPersonal', ['id' => $guest->id]) }}';">
                                 <td class="py-4 px-6 text-gray-700">{{ $guest->nama }}</td>
                                 <td class="py-4 px-6 text-gray-700">{{ $guest->asal_instansi }}</td>
                                 <td class="py-4 px-6 text-gray-700">{{ $guest->tujuan }}</td>

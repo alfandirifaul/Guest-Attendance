@@ -131,9 +131,8 @@ class GuestController extends Controller
 
     public function monthlyGuests()
     {
-        $monthlyGuests = Guest::whereMonth('created_at', [
-            Carbon::now()->month
-        ])->whereYear('created_at', Carbon::now()->year)
+        $monthlyGuests = Guest::whereMonth('created_at', Carbon::now()->month)
+            ->whereYear('created_at', Carbon::now()->year)
             ->orderBy('created_at', 'desc')
             ->paginate(30);
 

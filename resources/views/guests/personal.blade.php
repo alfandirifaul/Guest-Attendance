@@ -61,7 +61,8 @@
                     </div>
                     <div class="mt-24 mb-[-60px]">
                         <a href="{{ url()->previous() }}"
-                           class="inline-block px-6 py-3 bg-gradient-to-r from-[rgb(222,170,21)] to-yellow-400 text-white rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300">
+                           class="inline-block px-6 py-3 bg-gradient-to-r from-[rgb(222,170,21)] to-yellow-400
+                           text-white rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300">
                             &laquo; Back to List
                         </a>
                     </div>
