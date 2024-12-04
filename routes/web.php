@@ -19,7 +19,7 @@ Route::post('/guests/store', function (Request $request){
     return redirect('/');
 });
 
-//********************* IF YOU WANT TO USE THE LOGIN PAGE FOR DASHBOARD COMMENT CODE BELOW
+//********************* IF YOU WANT TO USE THE LOGIN PAGE FOR DASHBOARD, COMMENT CODE BELOW
 // Access Dashboard
 Route::get('/dashboard', [GuestController::class, 'dashboard'])
     ->name('dashboard');

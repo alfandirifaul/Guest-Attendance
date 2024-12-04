@@ -16,11 +16,12 @@
                     <div class="hidden md:flex items-center space-x-6 text-xl font-bold">
                         <a href="{{ route('guests.index') }}" class="text-white hover:text-blue-500 transition duration-300">Home</a>
 
-                        <!-- IF YOU USE THE LOGIN AUTH, UNCOMMENT CODE BELOW -->
-{{--                         <form action="{{ route('logout') }}" method="POST">--}}
-{{--                            @csrf--}}
-{{--                            <button class="text-white hover:text-blue-500 transition duration-300">Logout</button>--}}
-{{--                        </form> --}}
+                        @auth
+                             <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button class="text-white hover:text-blue-500 transition duration-300">Logout</button>
+                            </form>
+                        @endauth
 
                     </div>
                 </div>
