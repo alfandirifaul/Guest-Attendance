@@ -5,6 +5,7 @@ use App\Http\Controllers\GuestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
 
 // registration guests
 Route::get('/guests/create', [GuestController::class, 'create'])->name('guests.create');
@@ -21,7 +22,8 @@ Route::post('/guests/store', function (Request $request){
 
 // Download to excel file
 Route::get('guests/export', function(){
-    return Excel::download(new \App\Exports\GuestsExport(), 'data_tamu_smti.xlsx');
+    return Excel::download(new \App\Exports\GuestsExport(), 'data_tamu_smti.xlsx')
+        ->deleteFileAfterSend(true);
 })->name('guests.export');
 
 

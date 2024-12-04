@@ -36,7 +36,7 @@
                     {{ $title }}
                 </h1>
 
-                <a href="{{ route('guests.export') }}"
+                <a href="{{ route('guests.export') }}" id="export-btn"
                    class="inline-block px-6 py-3 bg-gradient-to-r from-[rgb(222,170,21)] to-yellow-400
                            text-white rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300">
                     Export File
@@ -92,5 +92,23 @@
             <p class="text-white">&copy; {{ date('Y') }} SMK-SMTI Pontianak. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('export-btn').addEventListener('click', function(){
+            fetch('/guests/export')
+                .then(response => {
+                    if(response.ok) {
+                        alert('File exported successfully');
+                        window.location.href = '/guests/export';
+                    }
+                    else {
+                        alert('Failed to export file');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                })
+        })
+    </script>
 
 @endsection
