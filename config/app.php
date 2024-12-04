@@ -123,6 +123,8 @@ return [
     ],
 
     'providers' => [
+        Illuminate\Validation\ValidationServiceProvider::class,
+        Illuminate\View\ViewServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Pagination\PaginationServiceProvider::class,
         Illuminate\Hashing\HashServiceProvider::class,
