@@ -69,6 +69,9 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="mt-5 mb-10">
+                    {{ $guests->links() }}
+                </div>
             @else
                 <p class="text-center text-gray-500 mt-10 text-xl">
                     No guests found. There is no visitors!

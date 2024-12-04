@@ -69,7 +69,7 @@ class GuestController extends Controller
     public function showAll()
     {
         $guests = Guest::orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(50);
         return view('guests.all', [
             'title' => 'All Guest List',
             'guests' => $guests,
@@ -121,7 +121,7 @@ class GuestController extends Controller
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek()
         ])->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(15);
 
         return view('guests.all', [
             'title' => 'Weekly Guests',
@@ -135,7 +135,7 @@ class GuestController extends Controller
             Carbon::now()->month
         ])->whereYear('created_at', Carbon::now()->year)
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(30);
 
         return view('guests.all', [
             'title' => 'Monthly Guests',
@@ -147,7 +147,7 @@ class GuestController extends Controller
     {
         $yearlyGuests = Guest::whereYear('created_at', Carbon::now()->year)
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(60);
 
         return view('guests.all', [
             'title' => 'Yearly Guests',
