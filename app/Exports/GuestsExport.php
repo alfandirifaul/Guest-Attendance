@@ -22,6 +22,7 @@ class GuestsExport implements FromCollection, WithHeadings, WithStyles, WithEven
         return Guest::orderBy('created_at', 'desc')->get()->map(function($guest, $index){
             return [
                 'number' => $index + 1,
+                'id' => $guest->id,
                 'name' => $guest->nama,
                 'origin' => $guest->asal_instansi,
                 'purpose' => $guest->tujuan,
@@ -34,7 +35,8 @@ class GuestsExport implements FromCollection, WithHeadings, WithStyles, WithEven
     public function headings(): array
     {
         return [
-            'No',
+            'No.',
+            'ID',
             'Nama',
             'Asal Instansi',
             'Tujuan',
@@ -58,15 +60,16 @@ class GuestsExport implements FromCollection, WithHeadings, WithStyles, WithEven
                 $sheet = $event->sheet->getDelegate();
 
                 // Set column widths
-                $sheet->getColumnDimension('A')->setWidth(5);
-                $sheet->getColumnDimension('B')->setWidth(20);
-                $sheet->getColumnDimension('C')->setWidth(25);
-                $sheet->getColumnDimension('D')->setWidth(20);
-                $sheet->getColumnDimension('E')->setWidth(30);
+                $sheet->getColumnDimension('A')->setWidth(10);
+                $sheet->getColumnDimension('B')->setWidth(10);
+                $sheet->getColumnDimension('C')->setWidth(20);
+                $sheet->getColumnDimension('D')->setWidth(25);
+                $sheet->getColumnDimension('E')->setWidth(20);
                 $sheet->getColumnDimension('F')->setWidth(30);
+                $sheet->getColumnDimension('G')->setWidth(30);
 
                 // Apply borders to all cells
-                $sheet->getStyle('A1:F' . $sheet->getHighestRow())->applyFromArray([
+                $sheet->getStyle('A1:G' . $sheet->getHighestRow())->applyFromArray([
                     'borders' => [
                         'allBorders' => [
                             'borderStyle' => Border::BORDER_THIN,
@@ -76,7 +79,7 @@ class GuestsExport implements FromCollection, WithHeadings, WithStyles, WithEven
                 ]);
 
                 // Apply background color to the header row
-                $sheet->getStyle('A1:F1')->applyFromArray([
+                $sheet->getStyle('A1:G1')->applyFromArray([
                     'fill' => [
                         'fillType' => Fill::FILL_SOLID,
                         'color' => ['argb' => 'FFFF00'],
