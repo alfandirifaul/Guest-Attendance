@@ -46,7 +46,7 @@
             <!-- Form Container -->
             <form class="bg-white shadow-md rounded-lg p-8 space-y-6 max-w-5xl mx-auto" method="POST" action="{{ route('guests.store') }}">
                 @csrf
-
+                <meta name="csrf-token" content="{{ csrf_token() }}">
                 <!-- Inputs and Camera Container -->
                 <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-10 lg:space-y-0 lg:space-x-10">
                     <!-- Input Fields -->
@@ -127,6 +127,7 @@
     </script>
 
     <script>
+        //**************************** CAPTURE CAMERA **************************
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia({ video: true })
                 .then(function (stream) {
@@ -151,8 +152,41 @@
             const dataURL = canvas.toDataURL('image/png');
             document.getElementById('foto').value = dataURL;
 
-            alert('Photo captured successfully!');
+            alert('Thank you, your photo captured successfully!');
         });
+
+        //**************************** CAPTURE CAMERA **************************
+
+
+        // *************************** ALERT REGISTER FORM ***************************
+        // Use querySelector to target the form directly
+        document.querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const form = this; // `this` refers to the form element
+
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form),  // Now this should work correctly
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Guest attendance registered successfully. Thank you for your willingness to fill out the form. I hope you can enjoy with our school activity and community. Have a nice day :)');
+                        window.location.href = '/guests';
+                    } else {
+                        alert('Failed to register guest attendance');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error during form submission:', error);
+                    alert('An error occurred while submitting the form');
+                });
+        });
+        // *************************** ALERT REGISTER FORM ***************************
+
     </script>
 
 @endsection
