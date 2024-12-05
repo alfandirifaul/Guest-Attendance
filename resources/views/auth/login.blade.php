@@ -25,7 +25,7 @@
         <div class="min-h-screen flex items-center justify-center bg-gray-100 mb-[-70px]">
             <!-- Main Container -->
             <div class="hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-in-out w-full max-w-6xl bg-white rounded-xl shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-2">
-
+                <img src="{{ asset('images/smti-image.jpg') }}" alt="Background" class="absolute inset-0 w-full h-full object-cover opacity-60">
                 <!-- Left Side (Image & Info) -->
                 <div class="relative bg-[rgb(7,38,68)] text-white flex items-center justify-center">
                     <img src="{{ asset('images/smti-image.jpg') }}" alt="Background" class="absolute inset-0 w-full h-full object-cover opacity-60">
@@ -39,10 +39,9 @@
                 </div>
 
                 <!-- Right Side (Login Form) -->
-                <div class="p-12">
-
+                <div class="p-12 inset-0 bg-[rgb(7,38,68)] bg-opacity-25 backdrop-blur-lg">
                     <!-- Logo -->
-                    <div class="flex justify-center mb-8">
+                    <div class="flex justify-center mb-8 ">
                         <a href="{{ route('guests.index') }}" class="flex items-center">
                             <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-12 w-12 mr-2">
                             <span class="text-3xl font-bold text-[rgb(7,38,68)]">SMK-SMTI Pontianak</span>
