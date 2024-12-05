@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\GuestsExport;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\GuestController;
 use Illuminate\Http\Request;
@@ -74,8 +75,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('guests/{id}', [GuestController::class, 'showPersonal'])->name('guests.showPersonal');
 
     // Download to excel file
-    Route::get('guests/export',[GuestController::class, 'exportGuests']
-    )->name('guests.export');
+    Route::get('guests/export/file', function () {
+        return Excel::download(new GuestsExport, 'data_tamu_smti.xlsx');
+    })->name('guests.export');
 
     // Import excel file to database
     Route::post('guests/import', [GuestController::class, 'importGuests'])

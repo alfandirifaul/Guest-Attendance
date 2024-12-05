@@ -161,7 +161,9 @@ class GuestController extends Controller
 
     public function exportGuests()
     {
-        return Excel::download(new GuestsExport, 'guests.xlsx');
+        $fileUrl = route('guests.export');
+
+        return view('guests.export', compact('fileUrl'));
     }
 
     public function importGuests(Request $request)
