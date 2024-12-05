@@ -26,6 +26,7 @@ class GuestsExport implements FromCollection, WithHeadings, WithStyles, WithEven
                 'name' => $guest->nama,
                 'origin' => $guest->asal_instansi,
                 'purpose' => $guest->tujuan,
+                'meet' => $guest->bertemu_dengan,
                 'phone_number' => $guest->nomor_hp,
                 'time' => $guest->created_at->format('l, d-m-Y H:i:s'),
             ];
@@ -40,6 +41,7 @@ class GuestsExport implements FromCollection, WithHeadings, WithStyles, WithEven
             'Nama',
             'Asal Instansi',
             'Tujuan',
+            'Menemui',
             'Nomor Telepon',
             'Waktu',
         ];
@@ -67,9 +69,10 @@ class GuestsExport implements FromCollection, WithHeadings, WithStyles, WithEven
                 $sheet->getColumnDimension('E')->setWidth(20);
                 $sheet->getColumnDimension('F')->setWidth(30);
                 $sheet->getColumnDimension('G')->setWidth(30);
+                $sheet->getColumnDimension('H')->setWidth(30);
 
                 // Apply borders to all cells
-                $sheet->getStyle('A1:G' . $sheet->getHighestRow())->applyFromArray([
+                $sheet->getStyle('A1:H' . $sheet->getHighestRow())->applyFromArray([
                     'borders' => [
                         'allBorders' => [
                             'borderStyle' => Border::BORDER_THIN,
@@ -79,7 +82,7 @@ class GuestsExport implements FromCollection, WithHeadings, WithStyles, WithEven
                 ]);
 
                 // Apply background color to the header row
-                $sheet->getStyle('A1:G1')->applyFromArray([
+                $sheet->getStyle('A1:H1')->applyFromArray([
                     'fill' => [
                         'fillType' => Fill::FILL_SOLID,
                         'color' => ['argb' => 'FFFF00'],

@@ -51,6 +51,7 @@
                             <th class="py-3 px-6 text-left font-medium uppercase tracking-wider">Name</th>
                             <th class="py-3 px-6 text-left font-medium uppercase tracking-wider">Origin</th>
                             <th class="py-3 px-6 text-left font-medium uppercase tracking-wider">Purpose</th>
+                            <th class="py-3 px-6 text-left font-medium uppercase tracking-wider">Meet</th>
                             <th class="py-3 px-6 text-left font-medium uppercase tracking-wider">Phone Number</th>
                             <th class="py-3 px-6 text-center font-medium uppercase tracking-wider">Photo</th>
                             <th class="py-3 px-6 text-left font-medium uppercase tracking-wider">Time</th>
@@ -63,6 +64,7 @@
                                 <td class="py-4 px-6 text-gray-700">{{ $guest->nama }}</td>
                                 <td class="py-4 px-6 text-gray-700">{{ $guest->asal_instansi }}</td>
                                 <td class="py-4 px-6 text-gray-700">{{ $guest->tujuan }}</td>
+                                <td class="py-4 px-6 text-gray-700">{{ $guest->bertemu_dengan }}</td>
                                 <td class="py-4 px-6 text-gray-700">{{ $guest->nomor_hp }}</td>
                                 <td class="py-4 px-6 text-center">
                                     <img src="{{ asset('storage/image/' . $guest->foto) }}"

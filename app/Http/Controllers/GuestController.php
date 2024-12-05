@@ -32,12 +32,14 @@ class GuestController extends Controller
                 'nama' => 'required|string|max:255',
                 'asal_instansi' => 'required|string|max:255',
                 'tujuan' => 'required|string|max:255',
+                'bertemu_dengan' => 'required|string|max:255',
                 'nomor_hp' => 'required|digits_between:9,15',
                 'foto' => 'required|string',
             ], [
                 'nama.required' => 'Nama wajib diisi.',
                 'asal_instansi.required' => 'Asal instansi harus diisi.',
                 'tujuan.required' => 'Tujuan kunjungan harus diisi.',
+                'bertemu_dengan.required' => 'Nama orang yang ditemui harus diisi.',
                 'nomor_hp.required' => 'Nomor HP wajib diisi.',
                 'nomor_hp.digits_between' => 'Nomor HP harus terdiri dari 9-15 digit.',
                 'foto.required' => 'Lakukan Capture Photo',
@@ -55,6 +57,7 @@ class GuestController extends Controller
             'nama' => $request->nama,
             'asal_instansi' => $request->asal_instansi,
             'tujuan' => $request->tujuan,
+            'bertemu_dengan' => $request->bertemu_dengan,
             'nomor_hp' => $request->nomor_hp,
             'foto' => $imageName,
         ]);

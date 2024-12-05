@@ -21,6 +21,7 @@ class GuestSeeder extends Seeder
                 'nama' => $faker->userName,
                 'asal_instansi' => $faker->word,
                 'tujuan' => $faker->word,
+                'bertemu_dengan' => $faker->name,
                 'nomor_hp' => $faker->phoneNumber,
                 'foto' => $faker->image('public/storage/image', 640, 480, null, false),
                 'created_at' => $faker->dateTimeBetween('-1 year', 'now'),

@@ -47,16 +47,16 @@
                             <span class="pl-6 font-medium">{{ $guest->tujuan }}</span>
                         </div>
                         <div class="flex items-center">
+                            <span class="font-semibold text-[rgb(222,170,21)] w-32">Meet:</span>
+                            <span class="pl-6 font-medium">{{ $guest->bertemu_dengan }}</span>
+                        </div>
+                        <div class="flex items-center">
                             <span class="font-semibold text-[rgb(222,170,21)] w-32">Phone:</span>
                             <span class="pl-6 font-medium">{{ $guest->nomor_hp }}</span>
                         </div>
                         <div class="flex items-center">
                             <span class="font-semibold text-[rgb(222,170,21)] w-32">Registered Date:</span>
-                            <span class="pl-6 font-medium">{{ $guest->created_at->format('l, j F Y g:i a') }}</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="font-semibold text-[rgb(222,170,21)] w-32">Registered Id:</span>
-                            <span class="pl-6 font-medium">{{ $guest->id }}</span>
+                            <span class="pl-6 font-medium">{{ $guest->created_at->format('l, j F Y g:i ') }}</span>
                         </div>
                     </div>
                     <div class="mt-24 mb-[-60px]">

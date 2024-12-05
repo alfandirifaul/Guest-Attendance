@@ -91,6 +91,7 @@
                             <th class="px-6 py-3 text-left text-sm font-semibold ">Name</th>
                             <th class="px-6 py-3 text-left text-sm font-semibold ">Origin</th>
                             <th class="px-6 py-3 text-left text-sm font-semibold ">Purpose</th>
+                            <th class="px-6 py-3 text-left text-sm font-semibold ">Meet</th>
                             <th class="px-6 py-3 text-left text-sm font-semibold ">Time</th>
                         </tr>
                         </thead>
@@ -101,6 +102,7 @@
                                 <td class="px-6 py-4 text-gray-800">{{ $guest->nama }}</td>
                                 <td class="px-6 py-4 text-gray-800">{{ $guest->asal_instansi }}</td>
                                 <td class="px-6 py-4 text-gray-800">{{ $guest->tujuan }}</td>
+                                <td class="px-6 py-4 text-gray-800">{{ $guest->bertemu_dengan }}</td>
                                 <td class="px-6 py-4 text-gray-800">{{ $guest->created_at->diffForHumans() }}</td>
                             </tr>
                         @endforeach

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('asal_instansi');
             $table->string('tujuan');
+            $table->string('bertemu_dengan');
             $table->string('nomor_hp');
             $table->string('foto');
 
