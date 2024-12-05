@@ -15,9 +15,10 @@ export default {
                 montserrat: ['Montserrat', 'sans-serif'],
             },
 
-            colors: {
-                'custom-color': 'rgb(7, 38, 68)',
+            maxWidth: {
+                '10xl': '120rem',
             },
+
         },
     },
     plugins: [],

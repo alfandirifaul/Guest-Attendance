@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="px-50 py-20">
-
-        <header>
+        <header class="mt-20">
             <nav class="bg-[rgb(7,38,68)] shadow-lg top-0 fixed w-full z-50">
-                <div class="max-w-8xl mx-auto px-20">
+                <div class="max-w-10xl mx-auto px-20">
                     <div class="flex justify-between items-center">
                         <!-- Logo -->
                         <div class="flex space-x-4">
@@ -15,12 +13,79 @@
                             </a>
                         </div>
 
-                        <div class="hidden md:flex items-center space-x-6 text-xl font-bold">
-                            <a href="#" class="text-white hover:text-blue-500 transition duration-300">Home</a>
-                            <a href="#about" class="text-white hover:text-blue-500 transition duration-300">More</a>
-                            <a href="{{ route('dashboard') }}" class="text-white hover:text-blue-500 transition duration-300">Dashboard</a>
+                        <div class="hidden md:flex items-center justify-center space-x-6 text-xl font-bold">
+                            <a id="home-hide" href="#" class="text-white hover:text-blue-500 transition duration-300 flex items-center">
+                                Home
+                            </a>
+                            <a id="about-hide" href="#about" class="text-white hover:text-blue-500 transition duration-300 flex items-center">
+                                About
+                            </a>
+                            <button id="hamburger-btn" class="p-4 text-white font-bold text-4xl flex items-center justify-center mt-[-10px]">
+                                ☰
+                            </button>
                         </div>
                     </div>
+
+                    <!-- Side Bar -->
+                    <aside>
+                        <div id="sidebar"
+                             class="fixed top-0 right-0 h-full w-72 bg-[rgb(7,38,68)] bg-opacity-75 backdrop-blur-md translate-x-full
+                                    text-white transform transition-transform duration-300 shadow-lg rounded-tl-lg">
+                            <div class="flex justify-between items-center p-7 bg-[rgb(7,38,68)] shadow-lg rounded-tl-lg">
+                                <h1 class="text-2xl font-bold">More</h1>
+                                <button id="sidebar-hide" class="text-2xl font-semibold text-white hover:text-gray-300">
+                                    ✕
+                                </button>
+                            </div>
+                            <div class="p-6 space-y-8 mt-10">
+                                <!-- Navigation Section -->
+                                <div>
+                                    <h1 class="mb-2 text-lg font-bold text-white tracking-wider">Navigation</h1>
+                                    <nav class="space-y-4">
+                                        <a href="#"
+                                           class="flex items-center text-white hover:bg-[rgb(7,38,68)] hover:text-white transition duration-300
+                                                  py-3 px-6 rounded-lg space-x-3 transform hover:translate-x-2">
+                                            <i class="fas fa-tachometer-alt"></i>
+                                            <span>Home</span>
+                                        </a>
+                                        <a href="#about"
+                                           class="flex items-center text-white hover:bg-[rgb(7,38,68)] hover:text-white transition duration-300
+                                                  py-3 px-6 rounded-lg space-x-3 transform hover:translate-x-2">
+                                            <i class="fas fa-tachometer-alt"></i>
+                                            <span>About</span>
+                                        </a>
+                                        <a href="https://smtipontianak.sch.id/"
+                                           class="flex items-center text-white hover:bg-[rgb(7,38,68)] hover:text-white transition duration-300
+                                                  py-3 px-6 rounded-lg space-x-3 transform hover:translate-x-2">
+                                            <i class="fas fa-tachometer-alt"></i>
+                                            <span>Website</span>
+                                        </a>
+                                        <a href="{{ route('dashboard') }}"
+                                           class="flex items-center text-white hover:bg-[rgb(7,38,68)] hover:text-white transition duration-300 py-3 px-6 rounded-lg space-x-3 transform hover:translate-x-2">
+                                            <i class="fas fa-tachometer-alt"></i>
+                                            <span>Dashboard</span>
+                                        </a>
+                                    </nav>
+                                </div>
+
+                                @auth
+                                    <div>
+                                        <h1 class="mb-2 text-lg font-bold text-white tracking-wider">Admin</h1>
+                                        <nav>
+                                            <form action="{{ route('logout') }}" method="POST">
+                                                @csrf
+                                                <button class="flex items-center text-white hover:bg-[rgb(7,38,68)] hover:text-white transition duration-300 py-3 px-6 rounded-lg space-x-3 w-full transform hover:translate-x-2">
+                                                    <i class="fas fa-sign-out-alt"></i>
+                                                    <span>Logout</span>
+                                                </button>
+                                            </form>
+                                        </nav>
+                                    </div>
+                                @endauth
+                            </div>
+                            </div>
+                        </div>
+                    </aside>
                 </div>
             </nav>
         </header>
@@ -77,10 +142,10 @@
                 </div>
             </section>
 
-            <section class="bg-[rgb(7,38,68)] py-20 ">
+            <section class="bg-[rgb(7,38,68)] py-20">
                 <div class="mx-auto px-6 flex flex-col md:flex-row md:space-x-6">
                     <!-- Follow Us -->
-                    <div class="flex-1 bg-white p-6 shadow-lg rounded hover:shadow-2xl hover:translate-y-[-10px] transition-all duration-300 ease-in-out">
+                    <div id="follow-us" class="flex-1 bg-white p-6 shadow-lg rounded hover:shadow-2xl hover:translate-y-[-10px] transition-all duration-300 ease-in-out">
                         <h2 class="text-3xl font-bold text-[rgb(7,38,68)]  mb-4 text-center">Follow Us</h2>
                         <div class="flex flex-col items-center justify-center mt-10 space-y-6">
                             <!-- Instagram -->
@@ -125,7 +190,7 @@
                         </div>
                     </div>
 
-                    <div class="flex-1 bg-white p-6 shadow-lg rounded hover:shadow-2xl hover:translate-y-[-10px] transition-all duration-300 ease-in-out">
+                    <div id="contact-us" class="flex-1 bg-white p-6 shadow-lg rounded hover:shadow-2xl hover:translate-y-[-10px] transition-all duration-300 ease-in-out">
                         <h2 class="text-3xl font-bold text-[rgb(7,38,68)]  mb-4 text-center">Contact Us</h2>
                         <div class="text-[rgb(7,38,68)]  mt-20">
                             <p class="mb-4"><strong>Address:</strong><br>Jl. Sulawesi Dalam No.31, Akcaya, Kec. Pontianak Sel., Kota Pontianak, Kalimantan Barat 78113</p>
@@ -137,7 +202,7 @@
                     </div>
 
                     <!-- Our Location -->
-                    <div class="flex-1 bg-white p-6 shadow-lg rounded hover:shadow-2xl hover:translate-y-[-10px] transition-all duration-300 ease-in-out">
+                    <div id="our-location" class="flex-1 bg-white p-6 shadow-lg rounded hover:shadow-2xl hover:translate-y-[-10px] transition-all duration-300 ease-in-out">
                         <h2 class="text-3xl font-bold text-[rgb(7,38,68)] mb-4 text-center">Our Location</h2>
                         <div class="flex justify-center mt-12">
                             <iframe
@@ -161,7 +226,6 @@
                 <p class="text-white">&copy; {{ date('Y') }} SMK-SMTI Pontianak. All rights reserved.</p>
             </div>
         </footer>
-    </div>
 
     <script>
         //***************** S: halo
@@ -221,5 +285,9 @@
         }
         //***************** E: halo
         startAlternatingHalo();
+
+
+
+
     </script>
 @endsection
