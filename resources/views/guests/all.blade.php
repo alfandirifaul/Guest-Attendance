@@ -149,22 +149,4 @@
         </div>
     </footer>
 
-    <script>
-        document.getElementById('export-btn').addEventListener('click', function(){
-            fetch('/guests/export')
-                .then(response => {
-                    if(response.ok) {
-                        alert('File exported successfully');
-                        window.location.href = '/guests/export';
-                    }
-                    else {
-                        alert('Failed to export file');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                })
-        })
-    </script>
-
 @endsection
