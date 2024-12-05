@@ -144,6 +144,7 @@ return [
         Illuminate\Routing\RoutingServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\Mail\MailServiceProvider::class,
+
     ],
 
     'aliases' => [

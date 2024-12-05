@@ -20,16 +20,6 @@ Route::post('/guests/store', function (Request $request){
     return redirect('/');
 });
 
-// Download to excel file
-Route::get('guests/export', function(){
-    return Excel::download(new \App\Exports\GuestsExport(), 'data_tamu_smti.xlsx')
-        ->deleteFileAfterSend(true);
-})->name('guests.export');
-
-
-
-
-
 //********************* IF YOU WANT TO USE THE LOGIN PAGE FOR DASHBOARD, COMMENT CODE BELOW
 //// Access Dashboard
 //Route::get('/dashboard', [GuestController::class, 'dashboard'])
@@ -67,40 +57,29 @@ Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('l
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-// access dashboard
+// Authenticated Routes
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [GuestController::class, 'dashboard'])
-        ->name('dashboard');;
-});
+    // Dashboard
+    Route::get('/dashboard', [GuestController::class, 'dashboard'])->name('dashboard');
 
-//Show All Guests List
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard/all', [GuestController::class, 'showAll'])
-        ->name('guests.showAll');
-});
+    // Guest Lists
+    Route::prefix('/dashboard')->group(function () {
+        Route::get('/all', [GuestController::class, 'showAll'])->name('guests.showAll');
+        Route::get('/weekly', [GuestController::class, 'weeklyGuests'])->name('guests.weekly');
+        Route::get('/monthly', [GuestController::class, 'monthlyGuests'])->name('guests.monthly');
+        Route::get('/yearly', [GuestController::class, 'yearlyGuests'])->name('guests.yearly');
+    });
 
-//Show Weekly Guests List
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard/weekly', [GuestController::class, 'weeklyGuests'])
-        ->name('guests.weekly');
-});
+    // Guest Details
+    Route::get('guests/{id}', [GuestController::class, 'showPersonal'])->name('guests.showPersonal');
 
-//Show Monthly Guests List
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard/monthly', [GuestController::class, 'monthlyGuests'])
-        ->name('guests.monthly');
-});
+    // Download to excel file
+    Route::get('guests/export',[GuestController::class, 'exportGuests']
+    )->name('guests.export');
 
-//Show Yearly Guests List
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard/yearly', [GuestController::class, 'yearlyGuests'])
-        ->name('guests.yearly');
-});
-
-//Show Detail Guests
-Route::middleware(['auth'])->group(function () {
-    Route::get('guests/{id}', [GuestController::class, 'showPersonal'])
-        ->name('guests.showPersonal');
+    // Import excel file to database
+    Route::post('guests/import', [GuestController::class, 'importGuests'])
+        ->name('guests.import');
 });
 //***********************************************************
 

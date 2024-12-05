@@ -6,11 +6,13 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Guest;
+use App\Imports\GuestsImport;
+use App\Exports\GuestsExport;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Mail\GuestRegisteredMail;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
 
 class GuestController extends Controller
 {
@@ -157,5 +159,21 @@ class GuestController extends Controller
         ]);
     }
 
+    public function exportGuests()
+    {
+        return Excel::download(new GuestsExport, 'guests.xlsx');
+    }
+
+    public function importGuests(Request $request)
+    {
+        $file = $request->file('file');
+        $fileName = $file->getClientOriginalName();
+        $file->move('GuestsList', $fileName);
+
+        Excel::import(new GuestsImport, public_path('GuestsList/'.$fileName));
+
+        return redirect('/dashboard');
+
+    }
 }
 

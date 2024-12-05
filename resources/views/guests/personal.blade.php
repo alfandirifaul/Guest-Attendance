@@ -35,12 +35,19 @@
                             <!-- Navigation Section -->
                             <div>
                                 <h1 class="mb-2 text-lg font-bold text-white tracking-wider">Navigation</h1>
-                                <nav class="space-y-4">
+                                <nav>
                                     <a href="{{ route('guests.index') }}"
                                        class="flex items-center text-white hover:bg-[rgb(7,38,68)] hover:text-white transition duration-300
                                                   py-3 px-6 rounded-lg space-x-3 transform hover:translate-x-2">
                                         <i class="fas fa-tachometer-alt"></i>
                                         <span>Home</span>
+                                    </a>
+
+                                    <a href="{{ route('dashboard') }}"
+                                       class="flex items-center text-white hover:bg-[rgb(7,38,68)] hover:text-white transition duration-300
+                                                  py-3 px-6 rounded-lg space-x-3 transform hover:translate-x-2">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                        <span>Dashboard</span>
                                     </a>
                                 </nav>
                             </div>
@@ -55,10 +62,20 @@
                                             Export File
                                         </a>
 
+                                        <form action="{{ route('guests.import') }}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <label for="file-upload"
+                                                   class="flex items-center text-white hover:bg-[rgb(7,38,68)] hover:text-white transition duration-300
+                                                          py-3 px-6 rounded-lg space-x-3 w-full transform hover:translate-x-2">
+                                                <span>Import File</span>
+                                            </label>
+                                            <input id="file-upload" type="file" name="file" class="hidden" onchange="this.form.submit()">
+                                        </form>
+
                                         <form action="{{ route('logout') }}" method="POST">
                                             @csrf
                                             <button class="flex items-center text-white hover:bg-[rgb(7,38,68)] hover:text-white transition duration-300
-                                                           py-3 px-6 rounded-lg space-x-3 w-full transform hover:translate-x-2">
+                           py-3 px-6 rounded-lg space-x-3 w-full transform hover:translate-x-2">
                                                 <span>Logout</span>
                                             </button>
                                         </form>
