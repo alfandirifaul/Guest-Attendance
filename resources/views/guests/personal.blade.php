@@ -7,7 +7,7 @@
                 <div class="flex justify-between items-center">
                     <!-- Logo -->
                     <div class="flex space-x-4">
-                        <a href="#" class="flex items-center py-5 px-2 text-gray-700">
+                        <a href="{{ route('guests.index') }}" class="flex items-center py-5 px-2 text-gray-700">
                             <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-12 w-12 mr-2">
                             <span class="font-bold text-white text-2xl">SMK-SMTI PONTIANAK</span>
                         </a>
@@ -72,7 +72,7 @@
         </nav>
     </header>
 
-    <main class="bg-gray-100 min-h-screen pt-40 pb-2">
+    <main class="bg-gray-100 min-h-screen pt-20 pb-2">
         <div class="container mx-auto px-4 lg:px-8">
             <div class="flex justify-center items-center mb-16 text-slate-700 font-bold text-6xl">
                 <h1 class="text-[rgb(7,38,68)]">

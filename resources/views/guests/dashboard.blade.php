@@ -7,7 +7,7 @@
                 <div class="flex justify-between items-center">
                     <!-- Logo -->
                     <div class="flex space-x-4">
-                        <a href="#" class="flex items-center py-5 px-2 text-gray-700">
+                        <a href="{{ route('guests.index') }}" class="flex items-center py-5 px-2 text-gray-700">
                             <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-12 w-12 mr-2">
                             <span class="font-bold text-white text-2xl">SMK-SMTI PONTIANAK</span>
                         </a>
