@@ -39,11 +39,11 @@
                         <p id="greeting" class=" font-bold text-lg text-slate-700"></p>
                         <p class="animate-pulse duration-1">|</p>
 
-                        <!-- COMMENT CODE BELOW IF YOU USE LOGIN AUTH -->
-                        <p class="text-slate-600 text-lg font-medium">Admin</p>
-
-                        <!-- UNCOMMENT CODE BELOW IF YOU USE LOGIN AUTH -->
-{{--                        <p class="text-slate-600 text-lg font-medium">{{ ucfirst($user->name) }}</p>--}}
+                        @auth
+                            <p class="text-slate-600 text-lg font-medium">{{ ucfirst($user->name) }}</p>
+                        @else
+                            <p class="text-slate-600 text-lg font-medium">Admin</p>
+                        @endauth
                     </div>
                 </div>
 

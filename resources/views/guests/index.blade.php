@@ -18,6 +18,7 @@
                         <div class="hidden md:flex items-center space-x-6 text-xl font-bold">
                             <a href="#" class="text-white hover:text-blue-500 transition duration-300">Home</a>
                             <a href="#about" class="text-white hover:text-blue-500 transition duration-300">More</a>
+                            <a href="{{ route('dashboard') }}" class="text-white hover:text-blue-500 transition duration-300">Dashboard</a>
                         </div>
                     </div>
                 </div>
