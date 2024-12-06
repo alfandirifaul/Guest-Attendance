@@ -22,6 +22,8 @@ class GuestsImport implements ToModel, WithHeadingRow
 
         if (file_exists($imagePath)) {
             $newImagePath = 'images/' . $imageFileUrl;
+            $destination = public_path('images/' . $imageFileUrl);
+            copy($imagePath, $destination);
         } else {
             $newImagePath = null;
         }
