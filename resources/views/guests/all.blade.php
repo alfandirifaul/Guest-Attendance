@@ -42,6 +42,13 @@
                                         <i class="fas fa-tachometer-alt"></i>
                                         <span>Home</span>
                                     </a>
+
+                                    <a href="{{ route('dashboard') }}"
+                                       class="flex items-center text-white hover:bg-[rgb(7,38,68)] hover:text-white transition duration-300
+                                                  py-3 px-6 rounded-lg space-x-3 transform hover:translate-x-2">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                        <span>Dashboard</span>
+                                    </a>
                                 </nav>
                             </div>
 
