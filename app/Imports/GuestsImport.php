@@ -16,22 +16,30 @@ class GuestsImport implements ToModel, WithHeadingRow
     use Importable;
     public function model(array $row)
     {
-       $timestamp = Carbon::createFromFormat('l, d-m-Y H:i:s', $row['waktu'])->toDateString();
+        $timestamp = Carbon::createFromFormat('l, d-m-Y H:i:s', $row['waktu'])->toDateTimeString();
+        $imageFileUrl = $row['image_url'];
+        $imagePath = public_path('images/' . $imageFileUrl);
 
-       $guests = new Guest([
-           'nama' => $row['nama'],
-           'asal_instansi' => $row['asal_instansi'],
-           'tujuan' => $row['tujuan'],
-           'bertemu_dengan' => $row['menemui'],
-           'nomor_hp' => $row['nomor_telepon'],
-           'foto' => 'null',
-       ]);
+        if (file_exists($imagePath)) {
+            $newImagePath = 'images/' . $imageFileUrl;
+        } else {
+            $newImagePath = null;
+        }
 
-       $guests->created_at = $timestamp;
-       $guests->updated_at = $timestamp;
+        $guests = new Guest([
+            'nama' => $row['nama'],
+            'asal_instansi' => $row['asal_instansi'],
+            'tujuan' => $row['tujuan'],
+            'bertemu_dengan' => $row['menemui'],
+            'nomor_hp' => $row['nomor_telepon'],
+            'foto' => $newImagePath ?? 'null',
+        ]);
 
-       $guests->save(['timestamps' => false]);
+        $guests->created_at = $timestamp;
+        $guests->updated_at = $timestamp;
 
-       return $guests;
+        $guests->save(['timestamps' => false]);
+
+        return $guests;
     }
 }
